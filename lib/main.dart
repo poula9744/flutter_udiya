@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_udiya/DaSom/dasom.dart';
-import 'package:flutter_udiya/EunBin/eunbin.dart';
-import 'package:flutter_udiya/JaeHyeon/jaehyeon.dart';
-import 'package:flutter_udiya/JaeHyeon/jaehyeon2.dart';
-import 'package:flutter_udiya/SuBin/subin.dart';
-import 'package:flutter_udiya/YoungSoo/youngsoo.dart';
-import 'package:flutter_udiya/home.dart';
+
+import 'DaSom/dasom.dart';
+import 'EunBin/eunbin.dart';
+import 'JaeHyeon/jaehyeon.dart';
+import 'JaeHyeon/jaehyeon2.dart';
+import 'SuBin/subin.dart';
+import 'YoungSoo/youngsoo.dart';
+import 'home.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: "/",
+      initialRoute: "/youngsoo",
       routes: {
         "/": (context) => Home(),
         "/dasom": (context) => DaSom(),
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
         "/jaehyeon": (context) => JaeHyeon(),
         "/jaehyeon2": (context) => JeaHyeon2(),
         "/subin": (context) => SuBin(),
-        "/youngsoo": (context) => Youngsoo(),
+        "/youngsoo": (context) => YoungSoo(),
 
       },
     );
