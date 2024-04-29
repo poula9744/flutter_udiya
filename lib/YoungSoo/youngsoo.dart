@@ -165,7 +165,29 @@ class YoungSoo extends StatelessWidget {
                     ),
               ]))
             ],
-          )),
+          ),
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: (int index) {
+            switch (index) {
+              case 0:
+                Navigator.pushNamed(context, '/subin');
+                break;
+              case 1:
+                Navigator.pushNamed(context, '/youngsoo');
+                break;
+              default:
+            }
+          },
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home, color: Color(0xff000000),), label: 'home'),
+            BottomNavigationBarItem(icon: Icon(Icons.calculate, color: Color(0xff000000),), label: 'hdd'),
+          ],
+
+          //selectedItemColor: Color.fromARGB(255, 197, 142, 233),
+          //unselectedItemColor: Colors.grey,
+
+        ),
+      ),
     );
   }
 }
