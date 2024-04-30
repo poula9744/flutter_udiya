@@ -185,7 +185,7 @@ class JeaHyeon3 extends StatelessWidget {
               Navigator.pushNamed(context, '/youngsoo');
               break;
             case 3:
-              Navigator.pushNamed(context, '/jaehyeon3');
+              Navigator.pushNamed(context, '/jaehyeon2');
               break;
             case 4:
               Navigator.pushNamed(context, '/dasom');
