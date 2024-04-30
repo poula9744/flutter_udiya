@@ -112,16 +112,16 @@ class SuBin extends StatelessWidget {
               Navigator.pushNamed(context, '/');
               break;
             case 1:
-              Navigator.pushNamed(context, '/youngsoo');
+              Navigator.pushNamed(context, '/jaehyeon');
               break;
             case 2:
               Navigator.pushNamed(context, '/youngsoo');
               break;
             case 3:
-              Navigator.pushNamed(context, '/youngsoo');
+              Navigator.pushNamed(context, '/jaehyeon3');
               break;
             case 4:
-              Navigator.pushNamed(context, '/youngsoo');
+              Navigator.pushNamed(context, '/dasom');
               break;
             default:
 

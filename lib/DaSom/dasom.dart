@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 
 class DaSom extends StatelessWidget {
@@ -335,22 +337,25 @@ class DaSom extends StatelessWidget {
           ),
         ),
       ),
+
       bottomNavigationBar: BottomAppBar(
-        child: orderTotalButton(),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xff243c84),
+          ),
+          onPressed: () {
+            Navigator.pushNamed(context, '/eunbin');
+          },
+          child: Text(
+            "총 330,000 매장 주문하기",
+            style: TextStyle(color: Color(0xffffffff)),
+          ),
+        ),
       ),
+
     );
   }
 }
 
-ElevatedButton orderTotalButton() {
-  return ElevatedButton(
-    style: ElevatedButton.styleFrom(
-      backgroundColor: Color(0xff243c84),
-    ),
-    onPressed: () {},
-    child: Text(
-      "총 330,000 매장 주문하기",
-      style: TextStyle(color: Color(0xffffffff)),
-    ),
-  );
-}
+
+
