@@ -71,7 +71,9 @@ class JaeHyeon extends StatelessWidget {
                     width: 150,
                     height: 40,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.popUntil(context, (route) => route.isFirst);
+                      },
                       child: Text(
                         "홈으로",
                         style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.w600),
@@ -103,7 +105,7 @@ class JaeHyeon extends StatelessWidget {
         onTap: (int index) {
           switch (index) {
             case 0:
-              Navigator.pushNamed(context, '/');
+              Navigator.popUntil(context, (route) => route.isFirst);
               break;
             case 1:
               Navigator.pushNamed(context, '/jaehyeon');

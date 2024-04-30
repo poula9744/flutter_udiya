@@ -203,7 +203,7 @@ class Home extends StatelessWidget {
         onTap: (int index) {
           switch (index) {
             case 0:
-              Navigator.pushNamed(context, '/');
+              Navigator.popUntil(context, (route) => route.isFirst);
               break;
             case 1:
               Navigator.pushNamed(context, '/jaehyeon3');
