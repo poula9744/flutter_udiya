@@ -10,7 +10,7 @@ class EunBin extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Color(0xff243c84)),
-        title: Text("결제하기"),
+        title: Text("결제하기", style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff243c84))),
         actions: [
           IconButton(onPressed: (){
             print("홈으로");
