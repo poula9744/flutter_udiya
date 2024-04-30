@@ -193,6 +193,63 @@ class Home extends StatelessWidget {
           ),
         )
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (int index) {
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, '/');
+              break;
+            case 1:
+              Navigator.pushNamed(context, '/youngsoo');
+              break;
+            case 2:
+              Navigator.pushNamed(context, '/youngsoo2');
+              break;
+            case 3:
+              Navigator.pushNamed(context, '/subin');
+              break;
+            case 4:
+              Navigator.pushNamed(context, '/eunbin');
+              break;
+            default:
+          }
+        },
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: Color(0xff243c84),
+              ),
+              label: 'home'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.card_membership,
+                color: Color(0xff243c84),
+              ),
+              label: '스탬프'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.coffee,
+                color: Color(0xff243c84),
+              ),
+              label: '스탬프'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.credit_card,
+                color: Color(0xff243c84),
+              ),
+              label: '결제내역'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.shopping_bag,
+                color: Color(0xff243c84),
+              ),
+              label: '장바구니'),
+        ],
+
+        //selectedItemColor: Color.fromARGB(255, 197, 142, 233),
+        //unselectedItemColor: Colors.grey,
+      ),
     );
   }
 }
