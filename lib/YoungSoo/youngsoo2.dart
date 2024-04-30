@@ -39,12 +39,12 @@ class YoungSoo2 extends StatelessWidget {
                     width: 230,
                     margin: EdgeInsets.all(20),
                     child: TextFormField(
-                      // controller: _nameController,
+                        // controller: _nameController,
                         decoration: InputDecoration(
-                          labelText: '매장',
-                          hintText: '매장명을 입력하세요',
-                          border: OutlineInputBorder(),
-                        )),
+                      labelText: '매장',
+                      hintText: '매장명을 입력하세요',
+                      border: OutlineInputBorder(),
+                    )),
                   ),
                   Container(
                     margin: EdgeInsets.all(20),
@@ -77,71 +77,240 @@ class YoungSoo2 extends StatelessWidget {
                   Tab(
                     text: '나의 매장',
                     height: 50,
-                  )
-                  ,
+                  ),
                 ]),
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
+              child: Row(
+                children: [
+                  Icon(Icons.location_history),
+                  Text("가까운 순서로 정렬합니다"),
+                ],
+              ),
+            ),
             Expanded(
                 child: TabBarView(children: [
-                  ListView.builder(
-                      key: const PageStorageKey("LIST_VIEW1"),
-                      itemCount: 1000,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          color: Color(0xffdbdbdb),
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
-                          child: Center(
-                            child: Text(
-                              "List View $index",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.accents[index % 15],
-                                  fontWeight: FontWeight.bold),
-                            ),
+              ListView.builder(
+                  key: const PageStorageKey("LIST_VIEW1"),
+                  itemCount: 16,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      color: Color(0xffffffff),
+                      margin: EdgeInsets.all(10),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      width: MediaQuery.of(context).size.width,
+                      height: 200,
+                      child: Center(
+                        child: Container(
+                          height: 190,
+                          child: Column(
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                height: 45,
+                                margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "역삼플래티넘점",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Icon(Icons.star)
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: 180,
+                                          height: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            "서울 강남구 역삼동 826-37 쌍용플래티넘상가  B-108",
+                                            style: TextStyle(
+                                                fontSize: 10,
+                                                color: Color(0xffbfbfbf)
+                                                ),
+                                          ),
+                                        ),
+                                        Container(
+                                          width: 180,
+                                          height: 40,
+                                          alignment: Alignment.centerLeft,
+                                          child: Row(
+                                            children: [
+                                              Icon(Icons.add),
+                                              Text(
+                                                "485m",
+                                                style: TextStyle(
+                                                    fontSize: 16,
+                                                    ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    color: Color(0xffffffff),
+                                    width: 180,
+                                    height: 80,
+                                    padding: EdgeInsets.all(10),
+                                    alignment: Alignment.centerRight,
+                                    child: Image.asset(
+                                        width: 50,
+                                        height: 50,
+                                        'assets/images/profile.jpg',
+                                        fit: BoxFit.cover
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                height: 45,
+                                alignment: Alignment.centerRight,
+                                margin: EdgeInsets.fromLTRB(0, 0, 18, 0),
+                                child: Text(
+                                  "매장 정보",
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Color(0xff243c84),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
                           ),
-                        );
-                      }),
-                  Container(
-                    width: 10,
-                    color: const Color.fromRGBO(91, 91, 91, 1),
-                    child: const Center(
-                      child: Text(
-                        'Box',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 56,
-                            fontWeight: FontWeight.bold),
+                        ),
                       ),
-                    ),
+                    );
+                  }),
+              Container(
+                width: 10,
+                color: const Color.fromRGBO(91, 91, 91, 1),
+                child: const Center(
+                  child: Text(
+                    'Map',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 56,
+                        fontWeight: FontWeight.bold),
                   ),
+                ),
+              ),
                   ListView.builder(
                       key: const PageStorageKey("LIST_VIEW2"),
-                      itemCount: 1000,
+                      itemCount: 3,
                       itemBuilder: (context, index) {
                         return Container(
-                          color: Color(0xff9e9e9e),
+                          color: Color(0xffffffff),
+                          margin: EdgeInsets.all(10),
                           padding: const EdgeInsets.symmetric(vertical: 12),
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
+                          width: MediaQuery.of(context).size.width,
+                          height: 200,
                           child: Center(
-                            child: Text(
-                              "List View $index",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.accents[index % 15],
-                                  fontWeight: FontWeight.bold),
+                            child: Container(
+                              height: 190,
+                              child: Column(
+                                children: [
+                                  Container(
+                                    alignment: Alignment.centerLeft,
+                                    height: 45,
+                                    margin: EdgeInsets.fromLTRB(18, 0, 0, 0),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          "역삼플래티넘점",
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Icon(Icons.star)
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              width: 180,
+                                              height: 40,
+                                              alignment: Alignment.centerLeft,
+                                              child: Text(
+                                                "서울 강남구 역삼동 826-37 쌍용플래티넘상가  B-108",
+                                                style: TextStyle(
+                                                    fontSize: 10,
+                                                    color: Color(0xffbfbfbf)
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 180,
+                                              height: 40,
+                                              alignment: Alignment.centerLeft,
+                                              child: Row(
+                                                children: [
+                                                  Icon(Icons.add),
+                                                  Text(
+                                                    "485m",
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Container(
+                                        color: Color(0xffffffff),
+                                        width: 180,
+                                        height: 80,
+                                        padding: EdgeInsets.all(10),
+                                        alignment: Alignment.centerRight,
+                                        child: Image.asset(
+                                            width: 50,
+                                            height: 50,
+                                            'assets/images/profile.jpg',
+                                            fit: BoxFit.cover
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: 45,
+                                    alignment: Alignment.centerRight,
+                                    margin: EdgeInsets.fromLTRB(0, 0, 18, 0),
+                                    child: Text(
+                                      "매장 정보",
+                                      style: TextStyle(
+                                          fontSize: 16,
+                                          color: Color(0xff243c84),
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         );
                       }),
-
-
-                ]))
+            ]))
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -173,7 +342,6 @@ class YoungSoo2 extends StatelessWidget {
 
           //selectedItemColor: Color.fromARGB(255, 197, 142, 233),
           //unselectedItemColor: Colors.grey,
-
         ),
       ),
     );
