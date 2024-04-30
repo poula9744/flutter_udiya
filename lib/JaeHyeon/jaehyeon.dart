@@ -93,7 +93,9 @@ class JaeHyeon extends StatelessWidget {
                     width: 150,
                     height: 40,
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/jaehyeon2");
+                        },
                         child: Text(
                           "주문내역",
                           style: TextStyle(
