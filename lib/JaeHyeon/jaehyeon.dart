@@ -71,7 +71,9 @@ class JaeHyeon extends StatelessWidget {
                     width: 150,
                     height: 40,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, "/");
+                      },
                       child: Text(
                         "홈으로",
                         style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.w600),
@@ -83,7 +85,9 @@ class JaeHyeon extends StatelessWidget {
                     width: 150,
                     height: 40,
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, "/jaehyeon2");
+                        },
                         child: Text(
                           "주문내역",
                           style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.w600),
@@ -106,16 +110,16 @@ class JaeHyeon extends StatelessWidget {
               Navigator.pushNamed(context, '/');
               break;
             case 1:
-              Navigator.pushNamed(context, '/jaehyeon');
+              Navigator.pushNamed(context, '/youngsoo');
               break;
             case 2:
               Navigator.pushNamed(context, '/youngsoo');
               break;
             case 3:
-              Navigator.pushNamed(context, '/jaehyeon3');
+              Navigator.pushNamed(context, '/youngsoo');
               break;
             case 4:
-              Navigator.pushNamed(context, '/dasom');
+              Navigator.pushNamed(context, '/youngsoo');
               break;
             default:
 
