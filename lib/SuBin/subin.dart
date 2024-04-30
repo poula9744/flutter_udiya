@@ -121,12 +121,15 @@ class SuBin extends StatelessWidget {
                       height: 40,
                       child: OutlinedButton(
                         onPressed: () {},
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: Color(0xffffffff),
+                          padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        ),
                         child: Text(
                           "HOT",
                           style: TextStyle(
                             fontSize: 20,
                             color: Color(0xffa81111),
-                            backgroundColor: Colors.white,
                           ),
                         ),
                       )),
@@ -136,12 +139,15 @@ class SuBin extends StatelessWidget {
                       height: 40,
                       child: OutlinedButton(
                         onPressed: () {},
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: Color(0xffffffff),
+                          padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                        ),
                         child: Text(
                           "ICED",
                           style: TextStyle(
                             fontSize: 20,
-                            color: Color(0xff3b69ce),
-                            backgroundColor: Colors.white,
+                            color: Color(0xff243c84),
                           ),
                         ),
                       )),
@@ -150,39 +156,33 @@ class SuBin extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    width: 40,
-                    height: 40,
-                    child: OutlinedButton(
-                      onPressed: () {
-                        print("더하기");
-                        print(num);
-                      },
-                      child: Text("+",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Color(0xff3b69ce),
-                          backgroundColor: Colors.white,
-                        ),),
+                    margin: EdgeInsets.fromLTRB(30, 10, 0, 10),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Color(0xff243c84),),
+                    width: 90,
+                    child: Row(
+                      children: [
+                        Container(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.add),
+                            color: Color(0xffffffff),
+                          ),
+                        ),
+                        Container(child: Text("0", style: TextStyle(color: Color(0xffffffff)),),),
+                        Container(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.add),
+                            color: Color(0xffffffff),
+                          ),
+                        ),
+
+                      ],
                     ),
                   ),
-                  Text(
-                    "1",
-                    style: TextStyle(fontSize: 24),
-                  ),
                   Container(
-                    width: 50,
-                    height: 50,
-                    child: OutlinedButton(
-                        onPressed: () {
-                          print("빼기");
-                          print(num);
-                        },
-                        child: Text("-",
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Color(0xff3b69ce),
-                              backgroundColor: Colors.white,
-                            ))),
+                    margin: EdgeInsets.fromLTRB(150, 0, 0, 0),
+                    child: Text("300000원", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
                   )
                 ],
               ),
