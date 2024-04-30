@@ -35,10 +35,10 @@ class EunBin extends StatelessWidget {
                  children: [
                    Container(
                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                     padding: EdgeInsets.fromLTRB(30, 10, 50, 10),
+                     padding: EdgeInsets.fromLTRB(20, 10, 50, 10),
                      child: Text(
                        "주문매장",
-                       style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),),
+                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),),
                    ),
                    Column(
                      crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,7 +69,7 @@ class EunBin extends StatelessWidget {
                  children: [
                    Container(
                      margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                     child: Text("픽업예정시간", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600)),
+                     child: Text("픽업예정시간", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
                    ),
                    Container(
                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -118,7 +118,7 @@ class EunBin extends StatelessWidget {
                  children: [
                    Container(
                      margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                     child: Text("주문메뉴", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
+                     child: Text("주문메뉴", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                    ),
                    Container(
                      width: 450,
@@ -190,7 +190,7 @@ class EunBin extends StatelessWidget {
                      children: [
                        Container(
                          margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                         child: Text("쿠폰 적용", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
+                         child: Text("쿠폰 적용", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                        ),
                        Container(
                          margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
@@ -232,7 +232,7 @@ class EunBin extends StatelessWidget {
                  children: [
                    Container(
                      margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                     child: Text("결제수단", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
+                     child: Text("결제수단", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                    ),
                    Row(
                      crossAxisAlignment: CrossAxisAlignment.start,
@@ -317,7 +317,7 @@ class EunBin extends StatelessWidget {
                  children: [
                    Container(
                      margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                     child: Text("결제정보", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
+                     child: Text("결제정보", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                    ),
                    Container(
                      margin: EdgeInsets.fromLTRB(25, 10, 0, 0),

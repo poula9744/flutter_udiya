@@ -13,16 +13,18 @@ class YoungSoo2 extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(color: Color(0xff243c84)),
-          title: Text("매장 선택"),
+          title: Text("매장 선택", style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff243c84))),
           actions: [
             IconButton(
                 onPressed: () {
                   print("장바구니 클릭");
+                  Navigator.pushNamed(context, "/dasom");
                 },
                 icon: Icon(Icons.shopping_bag)),
             IconButton(
                 onPressed: () {
                   print("홈으로");
+                  Navigator.pushNamed(context, "/home");
                 },
                 icon: Icon(Icons.home))
           ],
@@ -35,25 +37,40 @@ class YoungSoo2 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    color: Color(0xffffffff),
-                    width: 230,
-                    margin: EdgeInsets.all(20),
+                    width: 220,
+                    height: 30,
+                    margin: EdgeInsets.fromLTRB(20, 20, 0, 20),
+                    padding: EdgeInsets.fromLTRB(5, 6, 0, 0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(color: Color(0xfff5f5f5)),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: TextFormField(
-                        // controller: _nameController,
+                      // controller: _nameController,
                         decoration: InputDecoration(
-                      labelText: '매장',
-                      hintText: '매장명을 입력하세요',
-                      border: OutlineInputBorder(),
-                    )),
+                          hintText: '매장명을 입력하세요',
+                          border: InputBorder.none,
+                        )
+                    ),
                   ),
                   Container(
-                    margin: EdgeInsets.all(20),
+                    margin: EdgeInsets.fromLTRB(10, 20, 0, 20),
                     child: ElevatedButton(
                         onPressed: () {
                           print("확인");
                           //writePerson();
                         },
-                        child: Text("검색")),
+                        style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
+                            backgroundColor: Color(0xffffffff),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                )
+                            )
+                        ),
+                        child: Text("검색", style: TextStyle(color: Color(0xff243c84), fontWeight: FontWeight.w600))),
                   ),
                 ],
               ),
@@ -84,7 +101,7 @@ class YoungSoo2 extends StatelessWidget {
               margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
               child: Row(
                 children: [
-                  Icon(Icons.location_history),
+                  Icon(Icons.location_on),
                   Text("가까운 순서로 정렬합니다"),
                 ],
               ),
@@ -118,7 +135,7 @@ class YoungSoo2 extends StatelessWidget {
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Icon(Icons.star)
+                                    Icon(Icons.star_border_rounded, size: 20)
                                   ],
                                 ),
                               ),
@@ -234,7 +251,7 @@ class YoungSoo2 extends StatelessWidget {
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        Icon(Icons.star)
+                                        Icon(Icons.star_border_rounded, size: 20)
                                       ],
                                     ),
                                   ),

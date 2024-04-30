@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
-      initialRoute: "/youngsoo",
+      initialRoute: "/",
       routes: {
         "/": (context) => Home(),
         "/dasom": (context) => DaSom(),

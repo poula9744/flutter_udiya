@@ -18,11 +18,13 @@ class YoungSoo extends StatelessWidget {
             IconButton(
                 onPressed: () {
                   print("장바구니 클릭");
+                  Navigator.pushNamed(context, "/dasom");
                 },
                 icon: Icon(Icons.shopping_bag)),
             IconButton(
                 onPressed: () {
                   print("홈으로");
+                  Navigator.pushNamed(context, "/home");
                 },
                 icon: Icon(Icons.home))
           ],
@@ -271,7 +273,7 @@ class YoungSoo extends StatelessWidget {
           onTap: (int index) {
             switch (index) {
               case 0:
-                Navigator.pushNamed(context, '/subin');
+                Navigator.pushNamed(context, '/');
                 break;
               case 1:
                 Navigator.pushNamed(context, '/youngsoo');
