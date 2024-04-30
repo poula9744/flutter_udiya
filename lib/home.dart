@@ -203,7 +203,7 @@ class Home extends StatelessWidget {
         onTap: (int index) {
           switch (index) {
             case 0:
-              Navigator.popUntil(context, (route) => route.isFirst);
+              Navigator.pushNamed(context, '/');
               break;
             case 1:
               Navigator.pushNamed(context, '/jaehyeon3');
@@ -260,4 +260,6 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+
 
