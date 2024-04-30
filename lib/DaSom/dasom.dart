@@ -165,7 +165,7 @@ class DaSom extends StatelessWidget {
                                     ),
                                     Container(
                                         child: Text(
-                                      "300,000",
+                                      "300,000원",
                                       textAlign: TextAlign.end,
                                     ))
                                   ],

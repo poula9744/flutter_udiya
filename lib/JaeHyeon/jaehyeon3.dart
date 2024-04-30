@@ -10,11 +10,12 @@ class JeaHyeon3 extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Color(0xff243c84)),
-        title: Text("스탬프 & 쿠폰함"),
+        title: Text("스탬프 & 쿠폰함", style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff243c84))),
         actions: [
           IconButton(
               onPressed: () {
                 print("장바구니 클릭");
+                Navigator.pushNamed(context, "/dasom");
               },
               icon: Icon(Icons.shopping_bag)),
           IconButton(
@@ -45,25 +46,29 @@ class JeaHyeon3 extends StatelessWidget {
             alignment: Alignment.centerLeft,
             margin: EdgeInsets.fromLTRB(50, 5, 0, 25),
             child: Text(
-              "우디야 스탬프",
+              "어디야 스탬프",
               style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
             ),
           ),
           Container(
             padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
             margin: EdgeInsets.fromLTRB(0, 0, 0, 30),
-            color: Color(0xffd6d6d6),
+            decoration: BoxDecoration(
+                color: Color(0xfff3f3f3),
+                borderRadius: BorderRadius.circular(10)
+            ),
             child: Column(
               children: [
                 Container(
                   decoration: BoxDecoration(
                     border: Border(
                         bottom: BorderSide(
-                            color: Color(0xff000000),
-                            style: BorderStyle.solid)),
+                            color: Color(0xff8a8a8a),
+                            style: BorderStyle.solid)
+                    ),
                   ),
                   width: 305,
-                  margin: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                  margin: EdgeInsets.fromLTRB(15, 3, 15, 0),
                   child: Container(
                     margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
                     child: Row(
@@ -93,15 +98,15 @@ class JeaHyeon3 extends StatelessWidget {
                   alignment: Alignment.center,
                 ),
                 Container(
-                  margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                  margin: EdgeInsets.fromLTRB(0, 9, 0, 0),
                   width: 300,
                   child: TextButton(
                     onPressed: () {},
                     child: Text(
                       "사용내역 확인하기",
                       style: TextStyle(
-                          color: Color(0xff000000),
-                          fontSize: 18,
+                          color: Color(0xff424242),
+                          fontSize: 16,
                           fontWeight: FontWeight.w600),
                     ),
                   ),
@@ -153,7 +158,7 @@ class JeaHyeon3 extends StatelessWidget {
               onPressed: () {},
               child: Text(
                 "주문하러 가기",
-                style: TextStyle(color: Color(0xffffffff)),
+                style: TextStyle(color: Color(0xffffffff), fontWeight: FontWeight.w600),
               ),
             ),
           )

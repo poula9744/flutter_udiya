@@ -11,7 +11,7 @@ class JaeHyeon extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Color(0xff243c84)),
-        title: Text("주문 완료"),
+        title: Text("주문 완료", style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff243c84))),
         actions: [
           IconButton(
               onPressed: () {
@@ -50,39 +50,43 @@ class JaeHyeon extends StatelessWidget {
               margin: EdgeInsets.fromLTRB(0, 35, 0, 0),
               child: Text(
                 "고객님이 주문하신",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 30),
               ),
             ),
             Container(
               child: Text(
                 "상품을 준비중입니다",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 30),
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                    decoration:BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xff243C84),),
-                    margin: EdgeInsets.fromLTRB(0, 30, 20, 0),
-                    width: 160,
-
+                    decoration:BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xff243C84),
+                    ),
+                    margin: EdgeInsets.fromLTRB(10, 30, 0, 0),
+                    width: 150,
+                    height: 40,
                     child: TextButton(
                       onPressed: () {},
                       child: Text(
                         "홈으로",
-                        style: TextStyle(color: Color(0xffffffff)),
+                        style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.w600),
                       ),
                     )),
                 Container(
                     decoration:BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xff243C84),),
-                    margin: EdgeInsets.fromLTRB(20, 30, 0, 0),
-                    width: 160,
+                    margin: EdgeInsets.fromLTRB(10, 30, 0, 0),
+                    width: 150,
+                    height: 40,
                     child: TextButton(
                         onPressed: () {},
                         child: Text(
                           "주문내역",
-                          style: TextStyle(color: Color(0xffffffff)),
+                          style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.w600),
                         ))),
               ],
             )
