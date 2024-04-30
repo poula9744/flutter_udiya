@@ -270,6 +270,12 @@ class YoungSoo extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          unselectedFontSize: 12.0,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedItemColor: Color(0xff243c84),
+          unselectedItemColor: Color(0xff9e9e9e),
           onTap: (int index) {
             switch (index) {
               case 0:
@@ -278,7 +284,17 @@ class YoungSoo extends StatelessWidget {
               case 1:
                 Navigator.pushNamed(context, '/youngsoo');
                 break;
+              case 2:
+                Navigator.pushNamed(context, '/youngsoo');
+                break;
+              case 3:
+                Navigator.pushNamed(context, '/youngsoo');
+                break;
+              case 4:
+                Navigator.pushNamed(context, '/youngsoo');
+                break;
               default:
+
             }
           },
           items: [
@@ -287,13 +303,31 @@ class YoungSoo extends StatelessWidget {
                   Icons.home,
                   color: Color(0xff243c84),
                 ),
-                label: 'home'),
+                label: '홈'),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.calculate,
+                  Icons.card_membership,
                   color: Color(0xff243c84),
                 ),
-                label: 'hdd'),
+                label: '스탬프'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.coffee,
+                  color: Color(0xff243c84),
+                ),
+                label: '주문'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.credit_card,
+                  color: Color(0xff243c84),
+                ),
+                label: '결제 내역'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.shopping_bag,
+                  color: Color(0xff243c84),
+                ),
+                label: '장바구니'),
           ],
 
           //selectedItemColor: Color.fromARGB(255, 197, 142, 233),

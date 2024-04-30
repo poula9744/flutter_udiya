@@ -11,11 +11,6 @@ class EunBin extends StatelessWidget {
         centerTitle: true,
         iconTheme: IconThemeData(color: Color(0xff243c84)),
         title: Text("결제하기", style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff243c84))),
-        actions: [
-          IconButton(onPressed: (){
-            print("홈으로");
-          }, icon: Icon(Icons.home))
-        ],
       ),
       body: Container(
         width: 1080,
@@ -174,6 +169,61 @@ class EunBin extends StatelessWidget {
                          ),
                        ],
                      ),
+                   ),
+                   Container(
+                     width: 450,
+                     height: 100,
+                     decoration: BoxDecoration(
+                         border: Border(bottom: BorderSide(color: Color(0xfff5f5f5))),
+                         borderRadius: BorderRadius.circular(10)
+                     ),
+                     child: Row(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       children: [
+                         Container(
+                           width: 150,
+                           height: 150,
+                           child: Image.asset(
+                               "assets/images/Beverage/HOT_Ginger_Tea.png"
+                           ),
+                         ),
+                         Container(
+                             child: Column(
+                               crossAxisAlignment: CrossAxisAlignment.start,
+                               children: [
+                                 Container(
+                                   margin: EdgeInsets.fromLTRB(0, 25, 0, 0),
+                                   child: Text("재현 스페셜 티", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+                                 ),
+                                 Container(
+                                   child: Text("300,000원", style: TextStyle(fontWeight: FontWeight.w600)),
+                                 ),
+                                 Container(
+                                   child: Row(
+                                     children: [
+                                       Container(
+                                         child: Text("ICED/"),
+                                       ),
+                                       Container(
+                                         child: Text("Large/"),
+                                       ),
+                                       Container(
+                                         child: Text("포장"),
+                                       ),
+                                       Container(
+                                         margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                                         alignment: Alignment.bottomRight,
+                                         child: Text("합계 303,700원", style: TextStyle(fontWeight: FontWeight.w600),),
+                                       )
+                                     ],
+                                   ),
+                                 ),
+
+                               ],
+                             )
+                         ),
+                       ],
+                     ),
                    )
                  ],
                ),
@@ -186,17 +236,20 @@ class EunBin extends StatelessWidget {
                child: Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
-                   Row(
-                     children: [
-                       Container(
-                         margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                         child: Text("쿠폰 적용", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
-                       ),
-                       Container(
-                         margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                         child: Text("보유 1장", style: TextStyle(fontSize: 15)),
-                       )
-                     ],
+                   Container(
+                     margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                     child: Row(
+                       children: [
+                         Container(
+                           margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                           child: Text("쿠폰 적용", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                         ),
+                         Container(
+                           margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                           child: Text("보유 1장", style: TextStyle(fontSize: 15)),
+                         )
+                       ],
+                     ),
                    ),
                    Row(
                      children: [
@@ -383,7 +436,12 @@ class EunBin extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        iconSize: 10,
+        type: BottomNavigationBarType.fixed,
+        unselectedFontSize: 12.0,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        selectedItemColor: Color(0xff243c84),
+        unselectedItemColor: Color(0xff9e9e9e),
         onTap: (int index) {
           switch (index) {
             case 0:
@@ -393,15 +451,16 @@ class EunBin extends StatelessWidget {
               Navigator.pushNamed(context, '/youngsoo');
               break;
             case 2:
-              Navigator.pushNamed(context, '/youngsoo2');
+              Navigator.pushNamed(context, '/youngsoo');
               break;
             case 3:
-              Navigator.pushNamed(context, '/subin');
+              Navigator.pushNamed(context, '/youngsoo');
               break;
             case 4:
-              Navigator.pushNamed(context, '/eunbin');
+              Navigator.pushNamed(context, '/youngsoo');
               break;
             default:
+
           }
         },
         items: [
@@ -410,7 +469,7 @@ class EunBin extends StatelessWidget {
                 Icons.home,
                 color: Color(0xff243c84),
               ),
-              label: 'home'),
+              label: '홈'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.card_membership,
@@ -422,13 +481,13 @@ class EunBin extends StatelessWidget {
                 Icons.coffee,
                 color: Color(0xff243c84),
               ),
-              label: '스탬프'),
+              label: '주문'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.credit_card,
                 color: Color(0xff243c84),
               ),
-              label: '결제내역'),
+              label: '결제 내역'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.shopping_bag,
