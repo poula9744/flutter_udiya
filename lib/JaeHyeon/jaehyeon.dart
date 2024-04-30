@@ -11,7 +11,9 @@ class JaeHyeon extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         iconTheme: IconThemeData(color: Color(0xff243c84)),
-        title: Text("주문 완료", style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff243c84))),
+        title: Text("주문 완료",
+            style: TextStyle(
+                fontWeight: FontWeight.w600, color: Color(0xff243c84))),
         actions: [
           IconButton(
               onPressed: () {
@@ -63,7 +65,7 @@ class JaeHyeon extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                    decoration:BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Color(0xff243C84),
                     ),
@@ -76,11 +78,17 @@ class JaeHyeon extends StatelessWidget {
                       },
                       child: Text(
                         "홈으로",
-                        style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                            color: Color(0xffffffff),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600),
                       ),
                     )),
                 Container(
-                    decoration:BoxDecoration(borderRadius: BorderRadius.circular(10),color: Color(0xff243C84),),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xff243C84),
+                    ),
                     margin: EdgeInsets.fromLTRB(10, 30, 0, 0),
                     width: 150,
                     height: 40,
@@ -88,7 +96,10 @@ class JaeHyeon extends StatelessWidget {
                         onPressed: () {},
                         child: Text(
                           "주문내역",
-                          style: TextStyle(color: Color(0xffffffff), fontSize: 16, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                              color: Color(0xffffffff),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600),
                         ))),
               ],
             )
@@ -120,7 +131,6 @@ class JaeHyeon extends StatelessWidget {
               Navigator.pushNamed(context, '/dasom');
               break;
             default:
-
           }
         },
         items: [
