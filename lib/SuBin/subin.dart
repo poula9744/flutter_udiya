@@ -157,7 +157,9 @@ class SuBin extends StatelessWidget {
                 children: [
                   Container(
                     margin: EdgeInsets.fromLTRB(30, 10, 0, 10),
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: Color(0xff243c84),),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Color(0xff243c84),),
                     width: 90,
                     child: Row(
                       children: [
@@ -168,11 +170,12 @@ class SuBin extends StatelessWidget {
                             color: Color(0xffffffff),
                           ),
                         ),
-                        Container(child: Text("0", style: TextStyle(color: Color(0xffffffff)),),),
+                        Container(child: Text("0", style: TextStyle(
+                            color: Color(0xffffffff)),),),
                         Container(
                           child: IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.add),
+                            icon: Icon(Icons.indeterminate_check_box),
                             color: Color(0xffffffff),
                           ),
                         ),
@@ -182,25 +185,46 @@ class SuBin extends StatelessWidget {
                   ),
                   Container(
                     margin: EdgeInsets.fromLTRB(150, 0, 0, 0),
-                    child: Text("300000원", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+                    child: Text("300000원", style: TextStyle(
+                        fontSize: 25, fontWeight: FontWeight.bold),),
                   )
                 ],
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(20, 10, 0, 20),
-                width: 370,
-                height: 50,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    color: Color(0xff243c84)),
-                child: Text(
-                  "주문하기",
-                  style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xffffffff)),
-                ),
+              Row(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(40, 10, 0, 20),
+                    width: 150,
+                    height: 50,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.0),
+                        color: Color(0xff243c84)),
+                    child: Text(
+                      "장바구니",
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xffffffff)),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(20, 10, 0, 20),
+                    width: 150,
+                    height: 50,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.0),
+                        color: Color(0xff243c84)),
+                    child: Text(
+                      "주문하기",
+                      style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xffffffff)),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
