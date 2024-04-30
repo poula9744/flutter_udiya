@@ -23,113 +23,115 @@ class JeaHyeon2 extends StatelessWidget {
               icon: Icon(Icons.home))
         ],
       ),
-      body: Container(
-        child: Container(
-          margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                alignment: Alignment.centerLeft,
-                child: Text("2024-04-29", style: TextStyle(fontWeight: FontWeight.bold),),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Color(0xffd6d6d6), style: BorderStyle.solid),
-                ),
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                width: 380,
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                      child: Text("역삼플래티넘", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                      width: 350,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Color(0xff243c84), style: BorderStyle.solid),
-                      ),
-                      child: Column(
+      body: SingleChildScrollView(
+          child: Container(
+        height: 620,
+        color: Color(0xfff3f3f3),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                  color: Color(0xffffffff),
+                  borderRadius: BorderRadius.circular(20)),
+              margin: EdgeInsets.all(10),
+              width: 390,
+              height: 130,
+              child: Row(
+                children: [
+                  Container(
+                      width: 100,
+                      child: Image.asset(
+                          "assets/images/coffee/HOT_cafe_americano.png")),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(20, 25, 20, 20),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            padding: EdgeInsets.fromLTRB(13, 0, 0, 0),
-                            child: Row(children: [SizedBox(width: 220, child: Text("아메리카노(L)")),
-                            SizedBox(width: 60, child: Text("iced")),
-                            SizedBox(width: 50, child: Text("1개"))],)
+                          Row(
+                            children: [
+                              Container(
+                                width: 15,
+                                child: Image.asset(
+                                  "assets/images/mark.jpg",
+                                ),
+                              ),
+                              Container(
+                                child: Text("역삼스타필드점"),
+                              )
+                            ],
                           ),
                           Container(
-                              padding: EdgeInsets.fromLTRB(13, 0, 0, 0),
-                              child: Row(children: [SizedBox(width: 220, child: Text("카푸치노(L)")),
-                                SizedBox(width: 60, child: Text("iced")),
-                                SizedBox(width: 50, child: Text("1개"))],)
+                            child: Text("아메리카노"),
                           ),
-                        ],
-                      ),
+                          Container(
+                            child: Text("외 1개"),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                      right: BorderSide(
+                                          color: Color(0xff9d9d9d),
+                                          style: BorderStyle.solid)),
+                                ),
+                                child: Text(
+                                  "주문",
+                                  style: TextStyle(color: Color(0xff9d9d9d)),
+                                ),
+                              ),
+                              Container(
+                                child: Text(
+                                  "2024-04-30",
+                                  style: TextStyle(color: Color(0xff9d9d9d)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ]),
+                  ),
+                  Container(
+                    padding: EdgeInsets.fromLTRB(10, 25, 20, 20),
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                          width: 70,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Color(0xffffffff),
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(color: Color(0xff243c84))),
+                          child: Text("픽업완료", style: TextStyle(color: Color(0xff243c84)),),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(13, 0, 0, 0),
+                          child: Text(
+                            "결제금액",
+                            style: TextStyle(fontSize: 12),
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                          child: Text(
+                            "300000원",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  )
+                ],
               ),
-              Container(
-                margin: EdgeInsets.fromLTRB(30, 0, 0, 0),
-                alignment: Alignment.centerLeft,
-                child: Text("2024-04-29", style: TextStyle(fontWeight: FontWeight.bold),),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Color(0xffd6d6d6), style: BorderStyle.solid),
-                ),
-                padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                width: 380,
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                      child: Text("역삼플래티넘", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600),),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                      alignment: Alignment.centerLeft,
-                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                      width: 350,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Color(0xff243c84), style: BorderStyle.solid),
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                              padding: EdgeInsets.fromLTRB(13, 0, 0, 0),
-                              child: Row(children: [SizedBox(width: 220, child: Text("아메리카노(L)")),
-                                SizedBox(width: 60, child: Text("iced")),
-                                SizedBox(width: 50, child: Text("1개"))],)
-                          ),
-                          Container(
-                              padding: EdgeInsets.fromLTRB(13, 0, 0, 0),
-                              child: Row(children: [SizedBox(width: 220, child: Text("카푸치노(L)")),
-                                SizedBox(width: 60, child: Text("iced")),
-                                SizedBox(width: 50, child: Text("1개"))],)
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              )
-            ],
-          ),
+            )
+          ],
         ),
-      ),
+      )),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (int index) {
           switch (index) {
