@@ -29,8 +29,9 @@ class EunBin extends StatelessWidget {
                width: 1080,
                color: Color(0xffffffff),
                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-               padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+               padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
                child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
                      child: Text(
@@ -53,8 +54,9 @@ class EunBin extends StatelessWidget {
                width: 1080,
                color: Color(0xffffffff),
                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-               padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+               padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
                child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
                      child: Text("픽업예정시간", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w700)),
@@ -72,23 +74,26 @@ class EunBin extends StatelessWidget {
                width: 1080,
                color: Color(0xffffffff),
                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-               padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+               padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
                child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
                      child: Text("주문메뉴", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w700)),
                    ),
                    Row(
+                     crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
                        Container(
                          width: 300,
                          height: 300,
                          child: Image.asset(
-                             "assets/images/profile.jpg"
+                             "assets/images/Beverage/HOT_Black _Herbal _Tea.png"
                          ),
                        ),
                        Container(
                          child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
                            children: [
                              Container(
                                child: Text("영수 스페셜 티"),
@@ -107,6 +112,7 @@ class EunBin extends StatelessWidget {
                          )
                        ),
                        Row(
+                         crossAxisAlignment: CrossAxisAlignment.start,
                          children: [
                            Container(
                              child: Text("ICED"),
@@ -128,8 +134,9 @@ class EunBin extends StatelessWidget {
                width: 1080,
                color: Color(0xffffffff),
                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-               padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+               padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
                child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Row(
                      children: [
@@ -158,7 +165,7 @@ class EunBin extends StatelessWidget {
                width: 1080,
                color: Color(0xffffffff),
                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-               padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+               padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
                child: Column(
                  children: [
                    Container(
@@ -166,7 +173,14 @@ class EunBin extends StatelessWidget {
                    ),
                    Row(
                      children: [
-                       ElevatedButton(onPressed: (){}, child: Text("신용카드")),
+                       ElevatedButton(
+                           onPressed: (){},
+                           style: ElevatedButton.styleFrom(
+                             backgroundColor: Color(0xff243c84),
+                             textStyle: TextStyle(fontSize: 30)
+                           ),
+                           child: Text("신용카드")
+                       ),
                        ElevatedButton(onPressed: (){}, child: Text("카카오페이"))
                      ],
                    ),
@@ -183,7 +197,7 @@ class EunBin extends StatelessWidget {
                width: 1080,
                color: Color(0xffffffff),
                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-               padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+               padding: EdgeInsets.fromLTRB(0, 15, 0, 10),
                child: Column(
                  children: [
                    Container(
