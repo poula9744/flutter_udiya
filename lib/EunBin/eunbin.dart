@@ -34,6 +34,7 @@ class EunBin extends StatelessWidget {
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
+                     margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
                      padding: EdgeInsets.fromLTRB(30, 10, 50, 10),
                      child: Text(
                        "주문매장",
@@ -116,12 +117,14 @@ class EunBin extends StatelessWidget {
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
-                     margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                     margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
                      child: Text("주문메뉴", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
                    ),
                    Container(
+                     width: 450,
+                     height: 100,
                      decoration: BoxDecoration(
-                         border: Border.all(color: Color(0xfff5f5f5)),
+                         border: Border(bottom: BorderSide(color: Color(0xfff5f5f5))),
                          borderRadius: BorderRadius.circular(10)
                      ),
                      child: Row(
@@ -139,36 +142,36 @@ class EunBin extends StatelessWidget {
                              crossAxisAlignment: CrossAxisAlignment.start,
                              children: [
                                Container(
+                                 margin: EdgeInsets.fromLTRB(0, 25, 0, 0),
                                  child: Text("영수 스페셜 티", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
                                ),
-                               Row(
-                                 mainAxisAlignment: MainAxisAlignment.start,
-                                 children: [
-                                   Container(
-                                     child: Text("1개"),
-                                   ),
-                                   Container(
-                                     child: Text("3,700원"),
-                                   )
-                                 ],
+                               Container(
+                                 child: Text("3,700원", style: TextStyle(fontWeight: FontWeight.w600)),
                                ),
+                               Container(
+                                 child: Row(
+                                   children: [
+                                     Container(
+                                       child: Text("ICED/"),
+                                     ),
+                                     Container(
+                                       child: Text("Large/"),
+                                     ),
+                                     Container(
+                                       child: Text("포장"),
+                                     ),
+                                     Container(
+                                       margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                                       alignment: Alignment.bottomRight,
+                                       child: Text("합계 3,700원", style: TextStyle(fontWeight: FontWeight.w600),),
+                                     )
+                                   ],
+                                 ),
+                               ),
+
                              ],
                            )
                          ),
-                         Row(
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             Container(
-                               child: Text("ICED"),
-                             ),
-                             Container(
-                               child: Text("Large"),
-                             ),
-                             Container(
-                               child: Text("매장 3,700원"),
-                             )
-                           ],
-                         )
                        ],
                      ),
                    )
@@ -178,7 +181,7 @@ class EunBin extends StatelessWidget {
              Container(
                width: 1080,
                color: Color(0xffffffff),
-               margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+               margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
                padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
                child: Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,21 +189,34 @@ class EunBin extends StatelessWidget {
                    Row(
                      children: [
                        Container(
-                         child: Text("쿠폰 적용", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w700)),
+                         margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                         child: Text("쿠폰 적용", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
                        ),
                        Container(
-                         child: Text("보유 1장"),
+                         margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                         child: Text("보유 1장", style: TextStyle(fontSize: 15)),
                        )
                      ],
                    ),
                    Row(
                      children: [
                        Container(
+                         width: 200,
+                         height: 30,
+                         decoration: BoxDecoration(
+                             border: Border.all(color: Color(0xff9e9e9e)),
+                             borderRadius: BorderRadius.circular(10)
+                         ),
+                         margin: EdgeInsets.fromLTRB(20, 0, 7, 0),
+                         padding: EdgeInsets.fromLTRB(10, 3, 5, 0),
                          child: Text("0원"),
                        ),
                        TextButton(
                            onPressed: (){},
-                           child: Text("선택"))
+                           style: ButtonStyle(
+                             backgroundColor: MaterialStateProperty.all(Color(0xff243c84)),
+                           ),
+                           child: Text("선택", style: TextStyle(color: Color(0xffffffff)),))
                      ],
                    )
                  ],
@@ -215,13 +231,15 @@ class EunBin extends StatelessWidget {
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
-                     child: Text("결제수단", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w700)),
+                     margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                     child: Text("결제수단", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
                    ),
                    Row(
                      crossAxisAlignment: CrossAxisAlignment.start,
                      children: [
                        Container(
-                         margin: EdgeInsets.fromLTRB(40, 10, 10, 10),
+                         width: 180,
+                         margin: EdgeInsets.fromLTRB(25, 10, 5, 10),
                          child: ElevatedButton(
                              onPressed: (){},
                              style: ElevatedButton.styleFrom(
@@ -235,7 +253,8 @@ class EunBin extends StatelessWidget {
                          ),
                        ),
                        Container(
-                         margin: EdgeInsets.fromLTRB(40, 10, 10, 10),
+                         width: 180,
+                         margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                          child: ElevatedButton(
                              onPressed: (){},
                              style: ElevatedButton.styleFrom(
@@ -251,28 +270,37 @@ class EunBin extends StatelessWidget {
                      ],
                    ),
                    Row(
+                     mainAxisAlignment: MainAxisAlignment.start,
                      children: [
-                       ElevatedButton(
-                           onPressed: (){},
-                           style: ElevatedButton.styleFrom(
-                             backgroundColor: Color(0xff243c84),
-                             padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                             shape: BeveledRectangleBorder(
-                               borderRadius: BorderRadius.circular(2),
+                       Container(
+                         width: 180,
+                         margin: EdgeInsets.fromLTRB(25, 0, 5, 10),
+                         child: ElevatedButton(
+                             onPressed: (){},
+                             style: ElevatedButton.styleFrom(
+                               backgroundColor: Color(0xff243c84),
+                               padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                               shape: BeveledRectangleBorder(
+                                 borderRadius: BorderRadius.circular(2),
+                               ),
                              ),
-                           ),
-                           child: Text("휴대폰결제", style: TextStyle(fontSize: 20, color: Color(0xffffffff)))
+                             child: Text("휴대폰결제", style: TextStyle(fontSize: 20, color: Color(0xffffffff)))
+                         ),
                        ),
-                       ElevatedButton(
-                           onPressed: (){},
-                           style: ElevatedButton.styleFrom(
-                             backgroundColor: Color(0xff243c84),
-                             padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                             shape: BeveledRectangleBorder(
-                               borderRadius: BorderRadius.circular(2),
+                       Container(
+                         width: 180,
+                         margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                         child: ElevatedButton(
+                             onPressed: (){},
+                             style: ElevatedButton.styleFrom(
+                               backgroundColor: Color(0xff243c84),
+                               padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                               shape: BeveledRectangleBorder(
+                                 borderRadius: BorderRadius.circular(2),
+                               ),
                              ),
-                           ),
-                           child: Text("네이버페이", style: TextStyle(fontSize: 20, color: Color(0xffffffff)))
+                             child: Text("네이버페이", style: TextStyle(fontSize: 20, color: Color(0xffffffff)))
+                         ),
                        )
                      ],
                    )
@@ -285,48 +313,70 @@ class EunBin extends StatelessWidget {
                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
                padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
                child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
-                     child: Text("결제정보", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w700)),
+                     margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                     child: Text("결제정보", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
                    ),
-                   Row(
-                     children: [
-                       Container(
-                         child: Text("메뉴금액"),
-                       ),
-                       Container(
-                         child: Text("3700원"),
-                       )
-                     ],
+                   Container(
+                     margin: EdgeInsets.fromLTRB(25, 10, 0, 0),
+                     child: Row(
+                       children: [
+                         Container(
+                           margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                           child: Text("메뉴금액", style: TextStyle(fontWeight: FontWeight.w600)),
+                         ),
+                         Container(
+                           child: Text("3700원"),
+                         )
+                       ],
+                     ),
                    ),
-                   Row(
-                     children: [
-                       Container(
-                         child: Text("할인쿠폰"),
-                       ),
-                       Container(
-                         child: Text("0원"),
-                       )
-                     ],
+                   Container(
+                     margin: EdgeInsets.fromLTRB(25, 5, 0, 0),
+                     child: Row(
+                       children: [
+                         Container(
+                           margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                           child: Text("할인쿠폰", style: TextStyle(fontWeight: FontWeight.w600)),
+                         ),
+                         Container(
+                           child: Text("0원"),
+                         )
+                       ],
+                     ),
                    ),
-                   Row(
-                     children: [
-                       Container(
-                         child: Text("총결제금액"),
-                       ),
-                       Container(
-                         child: Text("3700원"),
-                       )
-                     ],
+                   Container(
+                     margin: EdgeInsets.fromLTRB(25,5, 0, 0),
+                     child: Row(
+                       children: [
+                         Container(
+                           margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                           child: Text("총결제금액", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
+                         ),
+                         Container(
+                           child: Text("3700원", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
+                         )
+                       ],
+                     ),
                    )
                  ],
                ),
              ),
              Container(
                width: 1080,
-               height: 100,
-               color: Color(0xffffffff),
-               child: TextButton(onPressed: (){}, child: Text("결제하기", style: TextStyle(fontSize: 30, color: Color(0xffffffff)),)),
+               height: 70,
+               color: Color(0xff243c84),
+               child: Container(
+                 child: TextButton(
+                     onPressed: (){},
+                     style: ButtonStyle(
+                       backgroundColor: MaterialStateProperty.all(Color(0xff243c84)),
+                     ),
+                     child: Text("결제하기", style: TextStyle(fontSize: 30, color: Color(0xffffffff)),)
+                 ),
+               ),
              )
            ],
          ),
