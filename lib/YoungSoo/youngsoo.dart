@@ -66,51 +66,60 @@ class YoungSoo extends StatelessWidget {
                 indicatorWeight: 5,
                 tabs: [
                   Tab(
-                    text: 'List',
+                    text: 'UDIYA PICK',
                     height: 50,
                   ),
                   Tab(
-                    text: 'Grid',
+                    text: 'Coffee',
                     height: 50,
                   ),
                   Tab(
-                    text: 'Box',
+                    text: 'Tea',
                     height: 50,
                   )
                   , Tab(
-                    text: 'Box2',
+                    text: 'Flacks',
                     height: 50,
                   ),
                 ]),
             Expanded(
                 child: TabBarView(children: [
-                  ListView.builder(
-                      key: const PageStorageKey("LIST_VIEW"),
-                      itemCount: 1000,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          color: Color(0xff9e9e9e),
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          width: MediaQuery
-                              .of(context)
-                              .size
-                              .width,
-                          child: Center(
-                            child: Text(
-                              "List View $index",
-                              style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.accents[index % 15],
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        );
-                      }),
                   GridView.builder(
-                      key: const PageStorageKey("GRID_VIEW"),
+                      key: PageStorageKey("GRID_VIEW1"),
+                      itemCount: 5,
+                      gridDelegate:
+                      SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
+                      ),
+                      itemBuilder: ((context, index) {
+
+                        return Container(
+                          color: Color(0xfff5f5f5),
+                          child: Center(
+                              child: Column(
+                                children: [
+
+                                  Container(
+                                      width: 250,
+                                      child: Image.asset("assets/images/coffee/HOT_Decaffeine_Americano.png")
+                                  ),
+                                  Container(
+                                      child: Text("아메리카노")
+                                  ),
+                                  Container(
+                                      child: Text("3,200 원")
+                                  ),
+                                ],
+                              )),
+                        );
+                      })),
+                  GridView.builder(
+                      key: PageStorageKey("GRID_VIEW"),
                       itemCount: 15,
                       gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
+                      SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 12,
                         mainAxisSpacing: 12,
@@ -129,44 +138,109 @@ class YoungSoo extends StatelessWidget {
                                 children: [
                                   Text(
                                     "Grid View $index",
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Image.asset("assets/images/coffee/HOT_Decaffeine_Americano.png"),
-                                  Container(child: Text("아메리카노")),
-                                  Container(child: Text("3,200 원")),
+                                  Container(
+                                    width: 250,
+                                      child: Image.asset("assets/images/coffee/HOT_Decaffeine_Americano.png")
+                                  ),
+                                  Container(
+                                      child: Text("아메리카노")
+                                  ),
+                                  Container(
+                                      child: Text("3,200 원")
+                                  ),
                                 ],
                               )),
                         );
                       })),
-                  Container(
-                    width: 10,
-                    color: const Color.fromRGBO(91, 91, 91, 1),
-                    child: const Center(
-                      child: Text(
-                        'Box',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 56,
-                            fontWeight: FontWeight.bold),
+                  GridView.builder(
+                      key: PageStorageKey("GRID_VIEW3"),
+                      itemCount: 3,
+                      gridDelegate:
+                      SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
                       ),
-                    ),
-                  ),
-                  Container(
-                    width: 10,
-                    color: const Color.fromRGBO(91, 91, 91, 1),
-                    child: const Center(
-                      child: Text(
-                        'Box2',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 56,
-                            fontWeight: FontWeight.bold),
+                      itemBuilder: ((context, index) {
+                        List<int> _number = [
+                          Random().nextInt(255),
+                          Random().nextInt(255),
+                          Random().nextInt(255)
+                        ];
+                        return Container(
+                          color: Color.fromRGBO(
+                              _number[0], _number[1], _number[2], 1),
+                          child: Center(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Grid View $index",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Container(
+                                      width: 250,
+                                      child: Image.asset("assets/images/coffee/HOT_Decaffeine_Americano.png")
+                                  ),
+                                  Container(
+                                      child: Text("아메리카노")
+                                  ),
+                                  Container(
+                                      child: Text("3,200 원")
+                                  ),
+                                ],
+                              )),
+                        );
+                      })),
+                  GridView.builder(
+                      key: PageStorageKey("GRID_VIEW4"),
+                      itemCount: 13,
+                      gridDelegate:
+                      SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 12,
+                        mainAxisSpacing: 12,
                       ),
-                    ),
-                  ),
+                      itemBuilder: ((context, index) {
+                        List<int> _number = [
+                          Random().nextInt(255),
+                          Random().nextInt(255),
+                          Random().nextInt(255)
+                        ];
+                        return Container(
+                          color: Color.fromRGBO(
+                              _number[0], _number[1], _number[2], 1),
+                          child: Center(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "Grid View $index",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Container(
+                                      width: 250,
+                                      child: Image.asset("assets/images/coffee/HOT_Decaffeine_Americano.png")
+                                  ),
+                                  Container(
+                                      child: Text("아메리카노")
+                                  ),
+                                  Container(
+                                      child: Text("3,200 원")
+                                  ),
+                                ],
+                              )),
+                        );
+                      })),
                 ]))
           ],
         ),
@@ -184,10 +258,10 @@ class YoungSoo extends StatelessWidget {
           },
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home, color: Color(0xff000000),),
+                icon: Icon(Icons.home, color: Color(0xff243c84),),
                 label: 'home'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.calculate, color: Color(0xff000000),),
+                icon: Icon(Icons.calculate, color: Color(0xff243c84),),
                 label: 'hdd'),
           ],
 
