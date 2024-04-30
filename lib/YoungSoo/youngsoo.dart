@@ -13,7 +13,7 @@ class YoungSoo extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(color: Color(0xff243c84)),
-          title: Text("매장 주문"),
+          title: Text("매장주문", style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff243c84)),),
           actions: [
             IconButton(
                 onPressed: () {
@@ -35,19 +35,39 @@ class YoungSoo extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    color: Color(0xffffffff),
-                    width: 200,
-                    margin: EdgeInsets.all(20),
-                    child: Text("역삼플래티넘점"),
+                    child: Icon(Icons.location_on, color: Colors.white,),
                   ),
                   Container(
-                    margin: EdgeInsets.all(20),
-                    child: ElevatedButton(
-                        onPressed: () {
-                          print("확인");
-                          //writePerson();
-                        },
-                        child: Text("변경하기")),
+                    width: 220,
+                    height: 30,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Color(0xfff5f5f5)),
+                        borderRadius: BorderRadius.circular(10),
+                    ),
+                    margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                    padding: EdgeInsets.fromLTRB(8, 4, 0, 3),
+                    child: Text("역삼플래티넘점", textAlign: TextAlign.left, style: TextStyle(color: Color(0xff243c84), fontWeight: FontWeight.w600)),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    child: Container(
+                      child: ElevatedButton(
+                          onPressed: () {
+                            print("확인");
+                            //writePerson();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
+                            backgroundColor: Color(0xffffffff),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(10),
+                                  )
+                              )
+                          ),
+                          child: Text("변경하기", style: TextStyle(color: Color(0xff243c84), fontWeight: FontWeight.w600),)),
+                    ),
                   ),
                 ],
               ),
@@ -114,7 +134,7 @@ class YoungSoo extends StatelessWidget {
                               child: Image.asset(
                                   "assets/images/coffee/HOT_Decaffeine_Americano.png")),
                           Container(child: Text("아메리카노")),
-                          Container(child: Text("3,200 원")),
+                          Container(child: Text("3,200원")),
                         ],
                       )),
                     );
@@ -134,18 +154,19 @@ class YoungSoo extends StatelessWidget {
                           child: Column(
                         children: [
                           Text(
-                            "Grid View $index",
+                            "카페인/디카페인",
                             style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
+                              fontSize: 10,
+                              color: Color(0xffffffff),
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           Container(
                               width: 100,
                               child: Image.asset(
                                   "assets/images/coffee/HOT_Decaffeine_Americano.png")),
                           Container(child: Text("아메리카노")),
-                          Container(child: Text("3,200 원")),
+                          Container(child: Text("3,200원")),
                         ],
                       )),
                     );
@@ -165,7 +186,7 @@ class YoungSoo extends StatelessWidget {
                           child: Column(
                         children: [
                           Text(
-                            "Grid View $index",
+                            "카페인/디카페인",
                             style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
@@ -176,7 +197,7 @@ class YoungSoo extends StatelessWidget {
                               child: Image.asset(
                                   "assets/images/coffee/HOT_Decaffeine_Americano.png")),
                           Container(child: Text("아메리카노")),
-                          Container(child: Text("3,200 원")),
+                          Container(child: Text("3,200원")),
                         ],
                       )),
                     );
@@ -196,7 +217,7 @@ class YoungSoo extends StatelessWidget {
                           child: Column(
                         children: [
                           Text(
-                            "Grid View $index",
+                            "카페인/디카페인",
                             style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
@@ -207,7 +228,7 @@ class YoungSoo extends StatelessWidget {
                               child: Image.asset(
                                   "assets/images/coffee/HOT_Decaffeine_Americano.png")),
                           Container(child: Text("아메리카노")),
-                          Container(child: Text("3,200 원")),
+                          Container(child: Text("3,200원")),
                         ],
                       )),
                     );
@@ -227,7 +248,7 @@ class YoungSoo extends StatelessWidget {
                           child: Column(
                         children: [
                           Text(
-                            "Grid View $index",
+                            "카페인/디카페인",
                             style: TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
@@ -238,7 +259,7 @@ class YoungSoo extends StatelessWidget {
                               child: Image.asset(
                                   "assets/images/coffee/HOT_Decaffeine_Americano.png")),
                           Container(child: Text("아메리카노")),
-                          Container(child: Text("3,200 원")),
+                          Container(child: Text("3,200원")),
                         ],
                       )),
                     );
