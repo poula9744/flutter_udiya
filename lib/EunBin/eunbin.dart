@@ -116,12 +116,14 @@ class EunBin extends StatelessWidget {
                  crossAxisAlignment: CrossAxisAlignment.start,
                  children: [
                    Container(
-                     margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                     margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
                      child: Text("주문메뉴", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
                    ),
                    Container(
+                     width: 450,
+                     height: 100,
                      decoration: BoxDecoration(
-                         border: Border.all(color: Color(0xfff5f5f5)),
+                         border: Border(bottom: BorderSide(color: Color(0xfff5f5f5))),
                          borderRadius: BorderRadius.circular(10)
                      ),
                      child: Row(
@@ -139,36 +141,36 @@ class EunBin extends StatelessWidget {
                              crossAxisAlignment: CrossAxisAlignment.start,
                              children: [
                                Container(
+                                 margin: EdgeInsets.fromLTRB(0, 25, 0, 0),
                                  child: Text("영수 스페셜 티", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
                                ),
-                               Row(
-                                 mainAxisAlignment: MainAxisAlignment.start,
-                                 children: [
-                                   Container(
-                                     child: Text("1개"),
-                                   ),
-                                   Container(
-                                     child: Text("3,700원"),
-                                   )
-                                 ],
+                               Container(
+                                 child: Text("3,700원", style: TextStyle(fontWeight: FontWeight.w600)),
                                ),
+                               Container(
+                                 child: Row(
+                                   children: [
+                                     Container(
+                                       child: Text("ICED/"),
+                                     ),
+                                     Container(
+                                       child: Text("Large/"),
+                                     ),
+                                     Container(
+                                       child: Text("포장"),
+                                     ),
+                                     Container(
+                                       margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
+                                       alignment: Alignment.bottomRight,
+                                       child: Text("합계 3,700원", style: TextStyle(fontWeight: FontWeight.w600),),
+                                     )
+                                   ],
+                                 ),
+                               ),
+
                              ],
                            )
                          ),
-                         Row(
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             Container(
-                               child: Text("ICED"),
-                             ),
-                             Container(
-                               child: Text("Large"),
-                             ),
-                             Container(
-                               child: Text("매장 3,700원"),
-                             )
-                           ],
-                         )
                        ],
                      ),
                    )
@@ -178,7 +180,7 @@ class EunBin extends StatelessWidget {
              Container(
                width: 1080,
                color: Color(0xffffffff),
-               margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+               margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
                padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
                child: Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,21 +188,34 @@ class EunBin extends StatelessWidget {
                    Row(
                      children: [
                        Container(
-                         child: Text("쿠폰 적용", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w700)),
+                         margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                         child: Text("쿠폰 적용", style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700)),
                        ),
                        Container(
-                         child: Text("보유 1장"),
+                         margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
+                         child: Text("보유 1장", style: TextStyle(fontSize: 15)),
                        )
                      ],
                    ),
                    Row(
                      children: [
                        Container(
+                         width: 200,
+                         height: 30,
+                         decoration: BoxDecoration(
+                             border: Border.all(color: Color(0xff9e9e9e)),
+                             borderRadius: BorderRadius.circular(10)
+                         ),
+                         margin: EdgeInsets.fromLTRB(20, 0, 7, 0),
+                         padding: EdgeInsets.fromLTRB(10, 3, 5, 0),
                          child: Text("0원"),
                        ),
                        TextButton(
                            onPressed: (){},
-                           child: Text("선택"))
+                           style: ButtonStyle(
+                             backgroundColor: MaterialStateProperty.all(Color(0xff243c84)),
+                           ),
+                           child: Text("선택", style: TextStyle(color: Color(0xffffffff)),))
                      ],
                    )
                  ],
