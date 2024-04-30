@@ -194,6 +194,12 @@ class Home extends StatelessWidget {
         )
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        unselectedFontSize: 12.0,
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        selectedItemColor: Color(0xff243c84),
+        unselectedItemColor: Color(0xff9e9e9e),
         onTap: (int index) {
           switch (index) {
             case 0:
@@ -203,15 +209,16 @@ class Home extends StatelessWidget {
               Navigator.pushNamed(context, '/youngsoo');
               break;
             case 2:
-              Navigator.pushNamed(context, '/youngsoo2');
+              Navigator.pushNamed(context, '/youngsoo');
               break;
             case 3:
-              Navigator.pushNamed(context, '/subin');
+              Navigator.pushNamed(context, '/youngsoo');
               break;
             case 4:
-              Navigator.pushNamed(context, '/eunbin');
+              Navigator.pushNamed(context, '/youngsoo');
               break;
             default:
+
           }
         },
         items: [
@@ -220,7 +227,7 @@ class Home extends StatelessWidget {
                 Icons.home,
                 color: Color(0xff243c84),
               ),
-              label: 'home'),
+              label: '홈'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.card_membership,
@@ -232,13 +239,13 @@ class Home extends StatelessWidget {
                 Icons.coffee,
                 color: Color(0xff243c84),
               ),
-              label: '스탬프'),
+              label: '주문'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.credit_card,
                 color: Color(0xff243c84),
               ),
-              label: '결제내역'),
+              label: '결제 내역'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.shopping_bag,
