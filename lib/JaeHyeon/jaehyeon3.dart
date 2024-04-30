@@ -155,7 +155,9 @@ class JeaHyeon3 extends StatelessWidget {
             width: 240,
             decoration:BoxDecoration(borderRadius: BorderRadius.circular(30),color: Color(0xff243C84),),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, "/youngsoo");
+              },
               child: Text(
                 "주문하러 가기",
                 style: TextStyle(color: Color(0xffffffff), fontWeight: FontWeight.w600),
