@@ -4,8 +4,10 @@ import 'DaSom/dasom.dart';
 import 'EunBin/eunbin.dart';
 import 'JaeHyeon/jaehyeon.dart';
 import 'JaeHyeon/jaehyeon2.dart';
+import 'JaeHyeon/jaehyeon3.dart';
 import 'SuBin/subin.dart';
 import 'YoungSoo/youngsoo.dart';
+import 'YoungSoo/youngsoo2.dart';
 import 'home.dart';
 
 
@@ -32,8 +34,10 @@ class MyApp extends StatelessWidget {
         "/eunbin": (context) => EunBin(),
         "/jaehyeon": (context) => JaeHyeon(),
         "/jaehyeon2": (context) => JeaHyeon2(),
+        "/jaehyeon3": (context) => JeaHyeon3(),
         "/subin": (context) => SuBin(),
         "/youngsoo": (context) => YoungSoo(),
+        "/youngsoo2": (context) => YoungSoo2(),
 
       },
     );
