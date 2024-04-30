@@ -213,7 +213,7 @@ class EunBin extends StatelessWidget {
                                        Container(
                                          margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
                                          alignment: Alignment.bottomRight,
-                                         child: Text("합계 303,700원", style: TextStyle(fontWeight: FontWeight.w600),),
+                                         child: Text("합계 300,000원", style: TextStyle(fontWeight: FontWeight.w600),),
                                        )
                                      ],
                                    ),
@@ -409,7 +409,7 @@ class EunBin extends StatelessWidget {
                            child: Text("총결제금액", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
                          ),
                          Container(
-                           child: Text("3700원", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
+                           child: Text("303,700원", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600)),
                          )
                        ],
                      ),
@@ -448,13 +448,13 @@ class EunBin extends StatelessWidget {
               Navigator.pushNamed(context, '/');
               break;
             case 1:
-              Navigator.pushNamed(context, '/jaehyeon');
+              Navigator.pushNamed(context, '/jaehyeon3');
               break;
             case 2:
               Navigator.pushNamed(context, '/youngsoo');
               break;
             case 3:
-              Navigator.pushNamed(context, '/jaehyeon3');
+              Navigator.pushNamed(context, '/jaehyeon2');
               break;
             case 4:
               Navigator.pushNamed(context, '/dasom');

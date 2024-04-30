@@ -343,13 +343,13 @@ class YoungSoo2 extends StatelessWidget {
                 Navigator.pushNamed(context, '/');
                 break;
               case 1:
-                Navigator.pushNamed(context, '/jaehyeon');
+                Navigator.pushNamed(context, '/jaehyeon3');
                 break;
               case 2:
                 Navigator.pushNamed(context, '/youngsoo');
                 break;
               case 3:
-                Navigator.pushNamed(context, '/jaehyeon3');
+                Navigator.pushNamed(context, '/jaehyeon2');
                 break;
               case 4:
                 Navigator.pushNamed(context, '/dasom');
