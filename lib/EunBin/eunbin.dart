@@ -106,6 +106,7 @@ class _EunBinState extends State<_EunBin> {
   String menuTotal = "0";
 
   int total = 0;
+
   //생애주기별 훅
 
   //초기화할때
@@ -508,7 +509,6 @@ class _EunBinState extends State<_EunBin> {
                                         ),
                                       ),
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(25, 5, 0, 0),
                                         child: Row(
                                           children: [
                                             Container(
@@ -524,7 +524,6 @@ class _EunBinState extends State<_EunBin> {
                                         ),
                                       ),
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(25, 5, 0, 0),
                                         child: Row(
                                           children: [
                                             Container(
@@ -560,7 +559,10 @@ class _EunBinState extends State<_EunBin> {
                     color: Color(0xff243c84),
                     child: Container(
                       child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            print("결제하기");
+
+                          },
                           style: ButtonStyle(
                             backgroundColor:
                                 MaterialStateProperty.all(Color(0xff243c84)),
@@ -738,6 +740,86 @@ Future<String> getFran() async {
 }
 
 
+//결제하기
+Future<void> payment(LebVo lebVo) async {
+  try {
+    /*----요청처리-------------------*/
+    //Dio 객체 생성 및 설정
+    var dio = Dio();
+
+    // 헤더설정:json으로 전송
+    dio.options.headers['Content-Type'] = 'application/json';
 
 
+    // 서버 요청
+    final response = await dio.post(
+      'http://localhost:9011/api/payment',
 
+      data: {
+        // 예시 data  map->json자동변경
+        'total': lebVo.total,
+        'usemile': lebVo.mile,
+        'mile': lebVo.mile,
+        'totalmle': lebVo.totalmile
+      },
+
+    );
+
+    /*----응답처리-------------------*/
+    if (response.statusCode == 200) {
+      //접속성공 200 이면
+      print(response.data); // json->map 자동변경
+      //return PersonVo.fromJson(response.data["apiData"]);
+
+
+    } else {
+      //접속실패 404, 502등등 api서버 문제
+      throw Exception('api 서버 문제');
+    }
+  } catch (e) {
+    //예외 발생
+    throw Exception('Failed to load person: $e');
+  }
+}
+
+
+/*
+Future<void> history(List<LebVo> historyList) async {
+  try {
+    /*----요청처리-------------------*/
+    //Dio 객체 생성 및 설정
+    var dio = Dio();
+
+    // 헤더설정:json으로 전송
+    dio.options.headers['Content-Type'] = 'application/json';
+
+
+    // 서버 요청
+    final response = await dio.post(
+      'http://localhost:9011/api/payment',
+
+      data: {
+        // 예시 data  map->json자동변경
+
+      },
+
+    );
+
+    /*----응답처리-------------------*/
+    if (response.statusCode == 200) {
+      //접속성공 200 이면
+      print(response.data); // json->map 자동변경
+      //return PersonVo.fromJson(response.data["apiData"]);
+
+
+    } else {
+      //접속실패 404, 502등등 api서버 문제
+      throw Exception('api 서버 문제');
+    }
+  } catch (e) {
+    //예외 발생
+    throw Exception('Failed to load person: $e');
+  }
+}
+
+*/
