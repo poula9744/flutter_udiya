@@ -25,9 +25,7 @@ class SuBin extends StatelessWidget {
               icon: Icon(Icons.home))
         ],
       ),
-      body: Container(
-        child: _SuBin(),
-      ),
+      body: _SuBin(),
     );
   }
 }
@@ -48,23 +46,22 @@ class _SuBinState extends State<_SuBin> {
   @override
   void initState() {
     super.initState();
+    KsbVoFuture = getProductByNo(1, 2);
     //추가 코드 아래에 작성
   }
 
   @override
   Widget build(BuildContext context) {
     //라우터로 전달받은 cate_no, product_no
-    late final args = ModalRoute.of(context)!.settings.arguments as Map;
+    //late final args = ModalRoute.of(context)!.settings.arguments as Map;
 
     //cate_no, product_no 키를 사용하여 값을 추출
-    late final cate_no = args['cate_no'];
-    late final product_no = args['product_no'];
-    KsbVoFuture = getProductByNo();
+    //late final cate_no = args['cate_no'];
+    //late final product_no = args['product_no'];
+    //print(cate_no);
 
-    print("--------");
-    print(cate_no);
-    print(product_no);
-    print("--------");
+
+
 
     return FutureBuilder(
       future: KsbVoFuture, //Future<> 함수명, 으로 받은 데이타
@@ -91,7 +88,7 @@ class _SuBinState extends State<_SuBin> {
                     child: Image.asset(
                         width: 400,
                         height: 400,
-                        'assets/images/Flatccino/Pistachino_Magic_Pop_Flatccino.png',
+                        'assets/images/${snapshot.data!.picture}',
                         fit: BoxFit.cover),
                   ),
                   Container(
@@ -118,7 +115,7 @@ class _SuBinState extends State<_SuBin> {
                         width: 320,
                         height: 40,
                         child: Text(
-                          "${snapshot.data!.productname}",
+                          "${snapshot.data!.productname}"+"(${snapshot.data!.size})",
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.bold),
                         ),
@@ -153,7 +150,7 @@ class _SuBinState extends State<_SuBin> {
                     width: 350,
                     height: 55,
                     child: Text(
-                      "${snapshot.data!.text}" "(${snapshot.data!.size})",
+                      "${snapshot.data!.text}",
                       style: TextStyle(fontSize: 15),
                     ),
                   ),
@@ -228,7 +225,7 @@ class _SuBinState extends State<_SuBin> {
                             ),
                             Container(
                               child: Text(
-                                "0",
+                                "1",
                                 style: TextStyle(color: Color(0xffffffff)),
                               ),
                             ),
@@ -245,7 +242,7 @@ class _SuBinState extends State<_SuBin> {
                       Container(
                         margin: EdgeInsets.fromLTRB(150, 0, 0, 0),
                         child: Text(
-                          "300000원",
+                          "${snapshot.data!.price}" + "원",
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.bold),
                         ),
@@ -297,7 +294,7 @@ class _SuBinState extends State<_SuBin> {
     );
   }
 
-  Future<KsbVo> getProductByNo() async {
+  Future<KsbVo> getProductByNo(int cate_no, int product_no) async {
     try {
       /*----요청처리-------------------*/
       //Dio 객체 생성 및 설정
@@ -312,7 +309,9 @@ class _SuBinState extends State<_SuBin> {
       if (response.statusCode == 200) {
         //접속성공 200 이면
         print(response.data); // json->map 자동변경
-
+        print("========================="); // json->map 자동변경
+        print(KsbVo.fromJson(response.data));
+        print("========================="); // json->map 자동변경
         return KsbVo.fromJson(response.data);
       } else {
         //접속실패 404, 502등등 api서버 문제

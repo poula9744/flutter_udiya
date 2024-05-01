@@ -2,35 +2,39 @@ import 'package:flutter/cupertino.dart';
 
 class KsbVo {
   //필드
-  int product_no;
-  int cate_no;
-  String productname;
-  int price;
-  String text;
-  String picture;
-  String size;
-  int hi_no;
-  int shop_no;
-  int users_no;
-  int count;
+  int? product_no;
+  int? cate_no;
+  String? productname;
+  int? price;
+  String? text;
+  String? picture;
+  String? size;
+  int? hi_no;
+  int? shop_no;
+  int? users_no;
+  int? count;
+  String? cate_name;
 
   //생성자
   KsbVo({
-    required this.product_no,
-    required this.cate_no,
-    required this.productname,
-    required this.price,
-    required this.text,
-    required this.picture,
-    required this.size,
-    required this.hi_no,
-    required this.shop_no,
-    required this.users_no,
-    required this.count,
+    this.product_no,
+    this.cate_no,
+    this.productname,
+    this.price,
+    this.text,
+    this.picture,
+    this.size,
+    this.hi_no,
+    this.shop_no,
+    this.users_no,
+    this.count,
+    this.cate_name,
   });
 
   //map--> personVo형식으로 변환
   factory KsbVo.fromJson(Map<String, dynamic> apiData) {
+    print("=========================aa");
+    print(apiData);
     return KsbVo(
         product_no: apiData['product_no'],
         cate_no: apiData['cate_no'],
@@ -42,7 +46,8 @@ class KsbVo {
         hi_no: apiData['hi_no'],
         shop_no: apiData['shop_no'],
         users_no: apiData['users_no'],
-        count: apiData['count']
+        count: apiData['count'],
+        cate_name: apiData['cate_name']
     );
   }
 
@@ -58,7 +63,8 @@ class KsbVo {
       'hi_no': hi_no,
       'shop_no': shop_no,
       'users_no': users_no,
-      'count': count
+      'count': count,
+      'cate_name': cate_name
     };
   }
 }
