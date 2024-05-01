@@ -50,7 +50,7 @@ class _SuBinState extends State<_SuBin> {
   @override
   void initState() {
     super.initState();
-    KsbVoFuture = getProductByNo(1, 2);
+
     //추가 코드 아래에 작성
   }
 
@@ -62,6 +62,8 @@ class _SuBinState extends State<_SuBin> {
     //cate_no, product_no 키를 사용하여 값을 추출
     late final cate_no = args['cate_no'];
     late final product_no = args['product_no'];
+    KsbVoFuture = getProductByNo(cate_no, product_no);
+
     print(cate_no);
     print(product_no);
     return FutureBuilder(
@@ -351,7 +353,7 @@ class _SuBinState extends State<_SuBin> {
       dio.options.headers['Content-Type'] = 'application/json';
       // 서버 요청
       final response = await dio.get(
-        'http://localhost:9011/api/udiya/detail/1/1',
+        'http://localhost:9011/api/udiya/detail/${cate_no}/${product_no}',
       );
       /*----응답처리-------------------*/
       if (response.statusCode == 200) {
