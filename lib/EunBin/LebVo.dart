@@ -2,37 +2,39 @@ class LebVo {
   //필드
   int users_no; //유저넘버
 
-  String date; //마일리지
-  int mile;
-  String accumulate;
-  int totalmile;
+  String? date; //마일리지
+  int? mile;
+  String? accumulate;
+  int? totalmile;
 
-  int receipt_no; //영수증
-  int total;
-  int usemile;
-  String selltime;
+  int? receipt_no; //영수증
+  int? total;
+  int? usemile;
+  String? selltime;
 
-  int franchisee_no;  //프랜차이즈
-  int franchisee_name;
+  int? franchisee_no;  //프랜차이즈
+  int? franchisee_name;
 
-  int history_no; //history
+  int? history_no; //history
   int count;
 
-  int product_no; //상품
-  String productname;
+  int? product_no; //상품
+  String? productname;
   int price;
-  String text;
-  String picture;
-  String size;
+  String? text;
+  String? picture;
+  String? size;
 
-  int cate_no; //카테고리
-  String cate_name;
+  int? cate_no; //카테고리
+  String? cate_name;
 
-  int shop_no; //장바구니
-  int shop_count;
+  int? shop_no; //장바구니
+  int? shop_count;
 
-  int hi_no;
-  String hoi;
+  int? hi_no;
+  String? hoi;
+
+  int? menuTotal;
 
   //생성자
   LebVo({
@@ -61,6 +63,7 @@ class LebVo {
     required this.shop_count,
     required this.hi_no,
     required this.hoi,
+    required this.menuTotal
   });
 
   //map--> personVo형식으로 변환
@@ -91,6 +94,7 @@ class LebVo {
       shop_count: apiData['shop_count'],
       hi_no: apiData['hi_no'],
       hoi: apiData['hoi'],
+      menuTotal: apiData['menuTotal']
     );
   }
 
@@ -122,6 +126,7 @@ class LebVo {
       'shop_count': shop_count,
       'hi_no': hi_no,
       'hoi': hoi,
+      'menuTotal': menuTotal
     };
   }
 }
