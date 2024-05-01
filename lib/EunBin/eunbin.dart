@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
 class EunBin extends StatelessWidget {
   const EunBin({super.key});
@@ -57,56 +58,6 @@ class EunBin extends StatelessWidget {
              Container(
                width: 1080,
                color: Color(0xffffffff),
-               margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-               padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
-               child: Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                 children: [
-                   Container(
-                     margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                     child: Text("픽업예정시간", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600)),
-                   ),
-                   Container(
-                     margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                     child: Row(
-                       children: [
-                         Container(
-                           margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                           child: Icon(Icons.check, size: 20),
-                         ),
-                         Container(
-                           child: Text("바로방문", style: TextStyle(fontSize: 20)),
-                         ),
-                         Container(
-                           margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                           child: Icon(Icons.circle_outlined, size: 20),
-                         ),
-                         Container(
-                           child: Text("5분 후", style: TextStyle(fontSize: 20)),
-                         ),
-                         Container(
-                           margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                           child: Icon(Icons.circle_outlined, size: 20),
-                         ),
-                         Container(
-                           child: Text("10분 후", style: TextStyle(fontSize: 20)),
-                         ),
-                         Container(
-                           margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                           child: Icon(Icons.circle_outlined, size: 20),
-                         ),
-                         Container(
-                           child: Text("15분 후", style: TextStyle(fontSize: 20)),
-                         ),
-                       ],
-                     ),
-                   ),
-                 ],
-               ),
-             ),
-             Container(
-               width: 1080,
-               color: Color(0xffffffff),
                padding: EdgeInsets.fromLTRB(0, 5, 0, 5),
                child: Column(
                  crossAxisAlignment: CrossAxisAlignment.start,
@@ -153,7 +104,7 @@ class EunBin extends StatelessWidget {
                                        child: Text("Large/"),
                                      ),
                                      Container(
-                                       child: Text("포장"),
+                                       child: Text("Take Out"),
                                      ),
                                      Container(
                                        margin: EdgeInsets.fromLTRB(50, 0, 0, 0),
@@ -242,11 +193,11 @@ class EunBin extends StatelessWidget {
                        children: [
                          Container(
                            margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                           child: Text("쿠폰 적용", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+                           child: Text("마일리지 적용", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
                          ),
                          Container(
                            margin: EdgeInsets.fromLTRB(10, 5, 0, 0),
-                           child: Text("보유 1장", style: TextStyle(fontSize: 15)),
+                           child: Text("보유 0000원", style: TextStyle(fontSize: 15)),
                          )
                        ],
                      ),
@@ -502,3 +453,78 @@ class EunBin extends StatelessWidget {
     );
   }
 }
+
+/*
+class _EunBin extends StatefulWidget {
+  const _EunBin({super.key});
+
+  @override
+  State<_EunBin> createState() => _EunBinState();
+}
+
+class _EunBinState extends State<_EunBin> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+
+      future: personVoFuture, //Future<> 함수명, 으로 받은 데이타
+
+      builder: (context, snapshot) {
+
+        if (snapshot.connectionState == ConnectionState.waiting) {
+
+          return Center(child: CircularProgressIndicator());
+
+        } else if (snapshot.hasError) {
+
+          return Center(child: Text('데이터를 불러오는 데 실패했습니다.'));
+
+        } else if (!snapshot.hasData) {
+
+          return Center(child: Text('데이터가 없습니다.'));
+
+        } else { //데이터가 있으면
+
+          _nameController.text = snapshot.data!.name;
+
+          return Column(
+
+            children: [
+
+              TextFormField(
+
+                controller: _nameController, //사용자가 수정한 값이 반영된다
+
+                decoration: InputDecoration(
+
+                  labelText: '이름',
+
+                ),
+
+              ),
+
+              ElevatedButton(
+
+                onPressed: () {
+
+                  updatePerson(); ////Future<> 함수명, 으로처리
+
+                },
+
+                child: Text('수정'),
+
+              ),
+
+            ],
+
+          );
+
+        } // 데이터가있으면
+
+      },
+
+    );
+  }
+}
+
+ */
