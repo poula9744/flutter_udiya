@@ -39,8 +39,12 @@ class _SuBin extends StatefulWidget {
 
 //할일 정의
 class _SuBinState extends State<_SuBin> {
+
   //변수(미래의 데이터 담기)
   late Future<KsbVo> KsbVoFuture;
+
+  late int count = 0;
+  late int hi = -1 ;
 
   //초기화 함수(1번만 실행됨)
   @override
@@ -53,16 +57,13 @@ class _SuBinState extends State<_SuBin> {
   @override
   Widget build(BuildContext context) {
     //라우터로 전달받은 cate_no, product_no
-    //late final args = ModalRoute.of(context)!.settings.arguments as Map;
+    late final args = ModalRoute.of(context)!.settings.arguments as Map;
 
     //cate_no, product_no 키를 사용하여 값을 추출
-    //late final cate_no = args['cate_no'];
-    //late final product_no = args['product_no'];
-    //print(cate_no);
-
-
-
-
+    late final cate_no = args['cate_no'];
+    late final product_no = args['product_no'];
+    print(cate_no);
+    print(product_no);
     return FutureBuilder(
       future: KsbVoFuture, //Future<> 함수명, 으로 받은 데이타
       builder: (context, snapshot) {
@@ -112,10 +113,11 @@ class _SuBinState extends State<_SuBin> {
                     children: [
                       Container(
                         margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        width: 320,
+                        width: 200,
                         height: 40,
                         child: Text(
-                          "${snapshot.data!.productname}"+"(${snapshot.data!.size})",
+                          "${snapshot.data!.productname}" +
+                              "(${snapshot.data!.size})",
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.bold),
                         ),
@@ -160,7 +162,7 @@ class _SuBinState extends State<_SuBin> {
                     width: 600,
                     height: 40,
                     child: Text(
-                      "${snapshot.data!.price}",
+                      "${snapshot.data!.price}원",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
@@ -172,7 +174,9 @@ class _SuBinState extends State<_SuBin> {
                           width: 130,
                           height: 40,
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              hi = 0;
+                            },
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Color(0xffffffff),
                               padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -190,7 +194,9 @@ class _SuBinState extends State<_SuBin> {
                           width: 130,
                           height: 40,
                           child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              hi = 1;
+                            },
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Color(0xffffffff),
                               padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
@@ -210,29 +216,38 @@ class _SuBinState extends State<_SuBin> {
                       Container(
                         margin: EdgeInsets.fromLTRB(30, 10, 0, 10),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(12),
                           color: Color(0xff243c84),
                         ),
-                        width: 90,
+                        width: 100,
                         child: Row(
                           children: [
                             Container(
                               child: IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.add),
+                                onPressed: () {
+                                  setState(() {
+                                    count--;
+                                  });
+                                },
+                                icon: Icon(Icons.remove),
                                 color: Color(0xffffffff),
                               ),
                             ),
                             Container(
                               child: Text(
-                                "1",
-                                style: TextStyle(color: Color(0xffffffff)),
+                                "${count}",
+                                style: TextStyle(
+                                    color: Color(0xffffffff), fontSize: 18),
                               ),
                             ),
                             Container(
                               child: IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.indeterminate_check_box),
+                                onPressed: () {
+                                  setState(() {
+                                    count++;
+                                  });
+                                },
+                                icon: Icon(Icons.add),
                                 color: Color(0xffffffff),
                               ),
                             ),
@@ -240,7 +255,7 @@ class _SuBinState extends State<_SuBin> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(150, 0, 0, 0),
+                        margin: EdgeInsets.fromLTRB(160, 0, 0, 0),
                         child: Text(
                           "${snapshot.data!.price}" + "원",
                           style: TextStyle(
@@ -252,37 +267,70 @@ class _SuBinState extends State<_SuBin> {
                   Row(
                     children: [
                       Container(
-                        margin: EdgeInsets.fromLTRB(40, 10, 0, 20),
-                        width: 150,
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5.0),
-                            color: Color(0xff243c84)),
-                        child: Text(
-                          "장바구니",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xffffffff)),
-                        ),
-                      ),
+                          margin: EdgeInsets.fromLTRB(45, 10, 10, 10),
+                          width: 150,
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: () {
+
+                              addCart();
+
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context){
+                                    return AlertDialog(
+                                      title: Text("장바구니"),
+                                      content: Text("장바구니에 담았습니다. 다른 메뉴를 보시겠습니까?"),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: (){
+                                              print(count);
+                                              //Navigator.pushNamed(context, "/dasom");
+                                            },
+                                            child: Text("장바구니 가기")),
+                                        TextButton(
+                                            onPressed: (){
+                                              Navigator.pushNamed(context, "/youngsoo");
+                                            },
+                                            child: Text("다른 메뉴 보러가기")),
+                                      ],
+                                    );
+                                  }
+                              );
+                            },
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: Color(0xff243c84),
+                              padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                            ),
+                            child: Text(
+                              "장바구니",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Color(0xffffffff),
+                              ),
+                            ),
+                          )),
                       Container(
-                        margin: EdgeInsets.fromLTRB(20, 10, 0, 20),
-                        width: 150,
-                        height: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5.0),
-                            color: Color(0xff243c84)),
-                        child: Text(
-                          "주문하기",
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xffffffff)),
-                        ),
-                      ),
+                          margin: EdgeInsets.fromLTRB(0, 10, 10, 10),
+                          width: 150,
+                          height: 50,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              print("장바구니 저장");
+                              addCart();
+                            },
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: Color(0xff243c84),
+                              padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
+                            ),
+                            child: Text(
+                              "주문하기",
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Color(0xffffffff),
+                              ),
+                            ),
+                          )),
                     ],
                   ),
                 ],
@@ -303,7 +351,7 @@ class _SuBinState extends State<_SuBin> {
       dio.options.headers['Content-Type'] = 'application/json';
       // 서버 요청
       final response = await dio.get(
-        'http://localhost:9011/api/udiya/detail/1/2',
+        'http://localhost:9011/api/udiya/detail/1/1',
       );
       /*----응답처리-------------------*/
       if (response.statusCode == 200) {
@@ -319,6 +367,41 @@ class _SuBinState extends State<_SuBin> {
       }
     } catch (e) {
       //예외 발생
+      throw Exception('Failed to load person: $e');
+    }
+  }
+
+  Future<KsbVo> addCart() async {
+    try {
+    /*----요청처리-------------------*/
+    //Dio 객체 생성 및 설정
+      var dio = Dio();
+    // 헤더설정:json으로 전송
+      dio.options.headers['Content-Type'] = 'application/json';
+
+    // 서버 요청
+      final response = await dio.post(
+        'http://localhost:9000/api/udiya/addCart',
+        data: { // 예시 data map->json자동변경
+          "count": count,
+          "hi": hi,
+          "product_no": 3,
+        },
+      );
+
+
+    /*----응답처리-------------------*/
+      if (response.statusCode == 200) {
+    //접속성공 200 이면
+        print(response.data); // json->map 자동변경
+
+        return KsbVo.fromJson(response.data["apiData"]);
+      } else {
+    //접속실패 404, 502등등 api서버 문제
+        throw Exception('api 서버 문제');
+      }
+    } catch (e) {
+    //예외 발생
       throw Exception('Failed to load person: $e');
     }
   }
