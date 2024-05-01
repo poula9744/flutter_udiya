@@ -324,9 +324,23 @@ class _YoungSooState extends State<_YoungSoo> {
                                 child: Column(
                                   children: [
                                     Container(
-                                        width: 90,
-                                        child: Image.asset(
-                                            "assets/images/${snapshot.data![index].picture}")
+                                      width: 90,
+                                      child: IconButton(
+                                        icon: Image.asset('assets/images/${snapshot.data![index].picture}'),
+                                        onPressed: () {
+
+                                          print("page이동");
+
+                                          Navigator.pushNamed(
+                                            context,
+                                            "/subin",
+                                            arguments: {
+                                              "cate_no": snapshot.data![index].cate_no,
+                                              "product_no": snapshot.data![index].product_no
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
                                     Container(child: Text("${snapshot.data![index].productname}")),
                                     Container(child: Text("${snapshot.data![index].size}")),
@@ -350,9 +364,23 @@ class _YoungSooState extends State<_YoungSoo> {
                                 child: Column(
                                   children: [
                                     Container(
-                                        width: 90,
-                                        child: Image.asset(
-                                            "assets/images/${snapshot.data![index].picture}")
+                                      width: 90,
+                                      child: IconButton(
+                                        icon: Image.asset('assets/images/${snapshot.data![index].picture}'),
+                                        onPressed: () {
+
+                                          print("page이동");
+
+                                          Navigator.pushNamed(
+                                            context,
+                                            "/subin",
+                                            arguments: {
+                                              "cate_no": snapshot.data![index].cate_no,
+                                              "product_no": snapshot.data![index].product_no
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
                                     Container(child: Text("${snapshot.data![index].productname}")),
                                     Container(child: Text("${snapshot.data![index].size}")),
@@ -376,9 +404,23 @@ class _YoungSooState extends State<_YoungSoo> {
                                 child: Column(
                                   children: [
                                     Container(
-                                        width: 90,
-                                        child: Image.asset(
-                                            "assets/images/${snapshot.data![index].picture}")
+                                      width: 90,
+                                      child: IconButton(
+                                        icon: Image.asset('assets/images/${snapshot.data![index].picture}'),
+                                        onPressed: () {
+
+                                          print("page이동");
+
+                                          Navigator.pushNamed(
+                                            context,
+                                            "/subin",
+                                            arguments: {
+                                              "cate_no": snapshot.data![index].cate_no,
+                                              "product_no": snapshot.data![index].product_no
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
                                     Container(child: Text("${snapshot.data![index].productname}")),
                                     Container(child: Text("${snapshot.data![index].size}")),
@@ -402,9 +444,23 @@ class _YoungSooState extends State<_YoungSoo> {
                                 child: Column(
                                   children: [
                                     Container(
-                                        width: 90,
-                                        child: Image.asset(
-                                            "assets/images/${snapshot.data![index].picture}")
+                                      width: 90,
+                                      child: IconButton(
+                                        icon: Image.asset('assets/images/${snapshot.data![index].picture}'),
+                                        onPressed: () {
+
+                                          print("page이동");
+
+                                          Navigator.pushNamed(
+                                            context,
+                                            "/subin",
+                                            arguments: {
+                                              "cate_no": snapshot.data![index].cate_no,
+                                              "product_no": snapshot.data![index].product_no
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ),
                                     Container(child: Text("${snapshot.data![index].productname}")),
                                     Container(child: Text("${snapshot.data![index].size}")),
