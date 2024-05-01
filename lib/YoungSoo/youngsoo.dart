@@ -165,7 +165,7 @@ class _YoungSooState extends State<_YoungSoo> {
                       ),
                       margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
                       padding: EdgeInsets.fromLTRB(8, 4, 0, 3),
-                      child: Text("역삼플래티넘점",
+                      child: Text("강남역점",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               color: Color(0xff243c84),
