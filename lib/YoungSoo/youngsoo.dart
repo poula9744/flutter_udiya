@@ -11,11 +11,14 @@ class YoungSoo extends StatelessWidget {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
-
         appBar: AppBar(
           centerTitle: true,
           iconTheme: IconThemeData(color: Color(0xff243c84)),
-          title: Text("매장주문", style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff243c84)),),
+          title: Text(
+            "매장주문",
+            style: TextStyle(
+                fontWeight: FontWeight.w600, color: Color(0xff243c84)),
+          ),
           actions: [
             IconButton(
                 onPressed: () {
@@ -33,6 +36,7 @@ class YoungSoo extends StatelessWidget {
         ),
 
         body: _YoungSoo(),
+
 
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
@@ -59,7 +63,6 @@ class YoungSoo extends StatelessWidget {
                 Navigator.pushNamed(context, '/dasom');
                 break;
               default:
-
             }
           },
           items: [
@@ -103,18 +106,6 @@ class YoungSoo extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 // 등록
 class _YoungSoo extends StatefulWidget {
   const _YoungSoo({super.key});
@@ -125,7 +116,6 @@ class _YoungSoo extends StatefulWidget {
 
 // 할일
 class _YoungSooState extends State<_YoungSoo> {
-
   // 공통 변수
   late Future<List<ProductVo>> productListFuture;
 
@@ -133,14 +123,14 @@ class _YoungSooState extends State<_YoungSoo> {
   @override
   void initState() {
     super.initState();
-    productListFuture = getProductList();
+    productListFuture = getProductList(0);
     //print(productListFuture);
   }
 
   // 그림그리기
   @override
   Widget build(BuildContext context) {
-    return  FutureBuilder(
+    return FutureBuilder(
       future: productListFuture, //Future<> 함수명, 으로 받은 데이타
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -149,7 +139,8 @@ class _YoungSooState extends State<_YoungSoo> {
           return Center(child: Text('데이터를 불러오는 데 실패했습니다.'));
         } else if (!snapshot.hasData) {
           return Center(child: Text('데이터가 없습니다.'));
-        } else { //데이터가 있으면
+        } else {
+          //데이터가 있으면
 
           return Column(
             children: [
@@ -159,7 +150,10 @@ class _YoungSooState extends State<_YoungSoo> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      child: Icon(Icons.location_on, color: Colors.white,),
+                      child: Icon(
+                        Icons.location_on,
+                        color: Colors.white,
+                      ),
                     ),
                     Container(
                       width: 220,
@@ -171,7 +165,11 @@ class _YoungSooState extends State<_YoungSoo> {
                       ),
                       margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
                       padding: EdgeInsets.fromLTRB(8, 4, 0, 3),
-                      child: Text("역삼플래티넘점", textAlign: TextAlign.left, style: TextStyle(color: Color(0xff243c84), fontWeight: FontWeight.w600)),
+                      child: Text("역삼플래티넘점",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Color(0xff243c84),
+                              fontWeight: FontWeight.w600)),
                     ),
                     Container(
                       margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
@@ -186,16 +184,27 @@ class _YoungSooState extends State<_YoungSoo> {
                                 backgroundColor: Color(0xffffffff),
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
-                                      Radius.circular(10),
-                                    )
-                                )
-                            ),
-                            child: Text("변경하기", style: TextStyle(color: Color(0xff243c84), fontWeight: FontWeight.w600),)),
+                                  Radius.circular(10),
+                                ))),
+                            child: Text(
+                              "변경하기",
+                              style: TextStyle(
+                                  color: Color(0xff243c84),
+                                  fontWeight: FontWeight.w600),
+                            )),
                       ),
                     ),
                   ],
                 ),
               ),
+
+
+
+
+
+
+
+
               TabBar(
                   indicatorColor: Color(0xff243c84),
                   labelStyle: TextStyle(
@@ -205,64 +214,102 @@ class _YoungSooState extends State<_YoungSoo> {
                   indicatorWeight: 5,
                   tabs: [
                     Tab(
-                      text: 'Pick',
+                      text: "전체",
                       height: 50,
                     ),
                     Tab(
-                      text: 'Coffee',
+                      text: "Coffee",
                       height: 50,
                     ),
                     Tab(
-                      text: 'Tea',
+                      text: "Tea",
                       height: 50,
                     ),
                     Tab(
-                      text: 'Beverage',
+                      text: "Beverage",
                       height: 50,
                     ),
                     Tab(
-                      text: 'Flacks',
+                      text: "Flacks",
                       height: 50,
                     ),
-                  ]),
+                  ],
+                  onTap: (index) {
+                    if(index == 1) {
+                      setState(() {
+                        productListFuture = getProductList(1);
+                        print("test1");
+                      });
+
+                    }else if (index == 2) {
+                      setState(() {
+                        productListFuture = getProductList(2);
+                        print("test2");
+                      });
+                    }else if (index == 3) {
+                      setState(() {
+                        productListFuture = getProductList(3);
+                        print("test3");
+                      });
+                    }else if (index == 4) {
+                      setState(() {
+                        productListFuture = getProductList(4);
+                        print("test4");
+                      });
+                    }else if (index == 0) {
+                      setState(() {
+                        productListFuture = getProductList(0);
+                        print("test0");
+                      });
+                    }
+
+                },
+              ),
               Expanded(
                   child: TabBarView(children: [
-                    GridView.builder(
-                        key: PageStorageKey("GRID_VIEW1"),
-                        itemCount: 6,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 12,
-                          mainAxisSpacing: 12,
-                        ),
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            color: Color(0xfff5f5f5),
-                            child: Center(
-                                child: Column(
-                                  children: [
-                                    Container(
-                                      color: Color(0xff243c84),
-                                      margin: EdgeInsets.all(10),
-                                      child: Text(
-                                        "카페인/디카페인",
-                                        style: TextStyle(
-                                          fontSize: 10,
-                                          color: Color(0xffffffff),
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                        width: 100,
-                                        child: Image.asset(
-                                            "assets/images/coffee/HOT_Decaffeine_Americano.png")),
-                                    Container(child: Text("카페라뗴")),
-                                    Container(child: Text("300.000 원")),
-                                  ],
-                                )),
-                          );
-                        }),
+
+                GridView.builder(
+                    key: PageStorageKey("GRID_VIEW1"),
+                    itemCount: snapshot.data!.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        child: Center(
+                            child: Column(
+                          children: [
+                            Container(
+                              width: 90,
+                              child: IconButton(
+                                icon: Image.asset('assets/images/${snapshot.data![index].picture}'),
+                                onPressed: () {
+
+                                  print("page이동");
+
+                                  Navigator.pushNamed(
+                                    context,
+                                    "/subin",
+                                    arguments: {
+                                      "cate_no": snapshot.data![index].cate_no,
+                                      "product_no": snapshot.data![index].product_no
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                            Container(child: Text("${snapshot.data![index].productname}")),
+                            Container(child: Text("${snapshot.data![index].size}")),
+                            Container(child: Text("${snapshot.data![index].price} 원")),
+                          ],
+                        )),
+                      );
+                    }
+                    ),
+
+
                     GridView.builder(
                         key: PageStorageKey("GRID_VIEW2"),
                         itemCount: snapshot.data!.length,
@@ -273,28 +320,22 @@ class _YoungSooState extends State<_YoungSoo> {
                         ),
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            color: Color(0xfff5f5f5),
                             child: Center(
                                 child: Column(
                                   children: [
-                                    Text(
-                                      "카페인/디카페인",
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        color: Color(0xffffffff),
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
                                     Container(
-                                        width: 100,
+                                        width: 90,
                                         child: Image.asset(
-                                            "assets/images/coffee/HOT_Decaffeine_Americano.png")),
+                                            "assets/images/${snapshot.data![index].picture}")
+                                    ),
                                     Container(child: Text("${snapshot.data![index].productname}")),
-                                    Container(child: Text("${snapshot.data![index].price}원")),
+                                    Container(child: Text("${snapshot.data![index].size}")),
+                                    Container(child: Text("${snapshot.data![index].price} 원")),
                                   ],
                                 )),
                           );
-                        }),
+                        }
+                    ),
                     GridView.builder(
                         key: PageStorageKey("GRID_VIEW3"),
                         itemCount: snapshot.data!.length,
@@ -305,27 +346,22 @@ class _YoungSooState extends State<_YoungSoo> {
                         ),
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            color: Color(0xfff5f5f5),
                             child: Center(
                                 child: Column(
                                   children: [
-                                    Text(
-                                      "카페인/디카페인",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
                                     Container(
-                                        width: 100,
+                                        width: 90,
                                         child: Image.asset(
-                                            "assets/images/coffee/HOT_Decaffeine_Americano.png")),
-                                    Container(child: Text("아메리카노")),
-                                    Container(child: Text("3,200원")),
+                                            "assets/images/${snapshot.data![index].picture}")
+                                    ),
+                                    Container(child: Text("${snapshot.data![index].productname}")),
+                                    Container(child: Text("${snapshot.data![index].size}")),
+                                    Container(child: Text("${snapshot.data![index].price} 원")),
                                   ],
                                 )),
                           );
-                        }),
+                        }
+                    ),
                     GridView.builder(
                         key: PageStorageKey("GRID_VIEW4"),
                         itemCount: snapshot.data!.length,
@@ -336,27 +372,22 @@ class _YoungSooState extends State<_YoungSoo> {
                         ),
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            color: Color(0xfff5f5f5),
                             child: Center(
                                 child: Column(
                                   children: [
-                                    Text(
-                                      "카페인/디카페인",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
                                     Container(
-                                        width: 100,
+                                        width: 90,
                                         child: Image.asset(
-                                            "assets/images/coffee/HOT_Decaffeine_Americano.png")),
-                                    Container(child: Text("아메리카노")),
-                                    Container(child: Text("3,200원")),
+                                            "assets/images/${snapshot.data![index].picture}")
+                                    ),
+                                    Container(child: Text("${snapshot.data![index].productname}")),
+                                    Container(child: Text("${snapshot.data![index].size}")),
+                                    Container(child: Text("${snapshot.data![index].price} 원")),
                                   ],
                                 )),
                           );
-                        }),
+                        }
+                    ),
                     GridView.builder(
                         key: PageStorageKey("GRID_VIEW5"),
                         itemCount: snapshot.data!.length,
@@ -367,41 +398,32 @@ class _YoungSooState extends State<_YoungSoo> {
                         ),
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            color: Color(0xfff5f5f5),
                             child: Center(
                                 child: Column(
                                   children: [
-                                    Text(
-                                      "카페인/디카페인",
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
-                                    ),
                                     Container(
-                                        width: 100,
+                                        width: 90,
                                         child: Image.asset(
-                                            "assets/images/coffee/HOT_Decaffeine_Americano.png")),
-                                    Container(child: Text("아메리카노")),
-                                    Container(child: Text("3,200원")),
+                                            "assets/images/${snapshot.data![index].picture}")
+                                    ),
+                                    Container(child: Text("${snapshot.data![index].productname}")),
+                                    Container(child: Text("${snapshot.data![index].size}")),
+                                    Container(child: Text("${snapshot.data![index].price} 원")),
                                   ],
                                 )),
                           );
-                        }),
-                  ]))
+                        }
+                    ),
+              ]))
             ],
           );
-
-
-
-
         } // 데이터가있으면
       },
     );
   }
 
   //리스트가져오기 dio통신
-  Future< List<ProductVo> > getProductList() async {
+  Future<List<ProductVo>> getProductList(int cate_no) async {
     try {
       /*----요청처리-------------------*/
       //Dio 객체 생성 및 설정
@@ -412,8 +434,7 @@ class _YoungSooState extends State<_YoungSoo> {
 
       // 서버 요청
       final response = await dio.get(
-        'http://localhost:9011/api/product/list',
-
+        'http://localhost:9011/api/product/list/${cate_no}',
       );
 
       /*----응답처리-------------------*/
@@ -430,9 +451,8 @@ class _YoungSooState extends State<_YoungSoo> {
           ProductVo productVo = ProductVo.fromJson(response.data[i]);
           productList.add(productVo);
         }
-        //print(productList);
+        print(productList.length);
         return productList;
-
       } else {
         //접속실패 404, 502등등 api서버 문제
         throw Exception('api 서버 문제');
@@ -442,5 +462,4 @@ class _YoungSooState extends State<_YoungSoo> {
       throw Exception('Failed to load person: $e');
     }
   } //getProductList()
-
 }

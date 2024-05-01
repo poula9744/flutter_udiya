@@ -50,6 +50,8 @@ class ProductVo {
     };
   }
 
-
-
+  @override
+  String toString() {
+    return 'ProductVo{product_no: $product_no, productname: $productname, price: $price, text: $text, picture: $picture, size: $size, cate_no: $cate_no, cate_name: $cate_name}';
+  }
 }
