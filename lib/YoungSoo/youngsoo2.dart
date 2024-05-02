@@ -138,44 +138,55 @@ class _YoungSoo2State extends State<_YoungSoo2> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
+                child: Icon(
+                  Icons.location_on,
+                  color: Colors.white,
+                ),
+              ),
+              Container(
                 width: 220,
                 height: 30,
-                margin: EdgeInsets.fromLTRB(20, 20, 0, 20),
-                padding: EdgeInsets.fromLTRB(5, 6, 0, 0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   border: Border.all(color: Color(0xfff5f5f5)),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: TextFormField(
-                  // controller: _nameController,
-                    decoration: InputDecoration(
-                      hintText: '매장명을 입력하세요',
-                      border: InputBorder.none,
-                    )
-                ),
+                margin: EdgeInsets.fromLTRB(10, 20, 10, 20),
+                padding: EdgeInsets.fromLTRB(8, 4, 0, 3),
+                child: Text("강남역점",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color(0xff243c84),
+                        fontWeight: FontWeight.w600)),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(10, 20, 0, 20),
-                child: ElevatedButton(
-                    onPressed: () {
-                      print("확인");
-                      //writePerson();
-                    },
-                    style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
-                        backgroundColor: Color(0xffffffff),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(10),
-                            )
-                        )
-                    ),
-                    child: Text("검색", style: TextStyle(color: Color(0xff243c84), fontWeight: FontWeight.w600))),
+                margin: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                child: Container(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        print("확인");
+                        //writePerson();
+                      },
+                      style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
+                          backgroundColor: Color(0xffffffff),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ))),
+                      child: Text(
+                        "변경하기",
+                        style: TextStyle(
+                            color: Color(0xff243c84),
+                            fontWeight: FontWeight.w600),
+                      )),
+                ),
               ),
             ],
           ),
         ),
+
+
         const TabBar(
             indicatorColor: Color(0xff243c84),
             labelStyle: TextStyle(
