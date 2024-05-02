@@ -177,6 +177,8 @@ class _YoungSooState extends State<_YoungSoo> {
                         child: ElevatedButton(
                             onPressed: () {
                               print("확인");
+                              Navigator.pushNamed(
+                                  context, "/youngsoo2");
                               //writePerson();
                             },
                             style: ElevatedButton.styleFrom(
