@@ -30,7 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_naver_map: ^1.1.1
   dio: ^4.0.0
   intl: ^0.19.0
   kiosk_mode: ^0.5.0+2
@@ -67,6 +67,7 @@ flutter:
     - assets/images/Blending_Tea/
     - assets/images/Flatccino/
     - assets/images/Ice_Flakes/
+    - assets/
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

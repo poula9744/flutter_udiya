@@ -9,7 +9,7 @@ import 'SuBin/subin.dart';
 import 'YoungSoo/youngsoo.dart';
 import 'YoungSoo/youngsoo2.dart';
 import 'home.dart';
-
+import 'JaeHyeon/test.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +38,8 @@ class MyApp extends StatelessWidget {
         "/subin": (context) => SuBin(),
         "/youngsoo": (context) => YoungSoo(),
         "/youngsoo2": (context) => YoungSoo2(),
+        "/test": (context) => HomePage(),
+
 
       },
     );
