@@ -336,7 +336,7 @@ class _SuBinState extends State<_SuBin> {
                               print(_product_no);
                               Navigator.pushNamed(
                                 context,
-                                "/eunbin",
+                                "/eunbin0",
                                 arguments: {
                                   "product_no": _product_no,
                                   "hi_no": hi,

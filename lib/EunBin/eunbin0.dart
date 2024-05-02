@@ -1,11 +1,9 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_udiya/EunBin/LebVo.dart';
+import 'LebVo.dart';
 
-class EunBin extends StatelessWidget {
-  const EunBin({super.key});
+class EunBin0 extends StatelessWidget {
+  const EunBin0({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +16,7 @@ class EunBin extends StatelessWidget {
                 fontWeight: FontWeight.w600, color: Color(0xff243c84))),
       ),
       body: Container(
-        child: _EunBin(),
+        child: _EunBin0(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -87,17 +85,16 @@ class EunBin extends StatelessWidget {
   }
 }
 
-class _EunBin extends StatefulWidget {
-  const _EunBin({super.key});
+class _EunBin0 extends StatefulWidget {
+  const _EunBin0({super.key});
 
   @override
-  State<_EunBin> createState() => _EunBinState();
+  State<_EunBin0> createState() => _EunBin0State();
 }
 
-class _EunBinState extends State<_EunBin> {
-
+class _EunBin0State extends State<_EunBin0> {
   //공통변수
-  late Future<List<LebVo>> LebListFuture;
+  late Future<LebVo> LebVoFuture;
   late Future<int> mileFuture;
   late Future<String> franFuture;
   late Future<int> menuTotalFuture;
@@ -124,11 +121,11 @@ class _EunBinState extends State<_EunBin> {
   ];
   final List<DropdownMenuItem<String>> _dropDownMenuItems = menuItems
       .map(
-            (String value) => DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-        ),
-      ).toList();
+        (String value) => DropdownMenuItem<String>(
+      value: value,
+      child: Text(value),
+    ),
+  ).toList();
 
   static const phoneItems = <String>[
     'SKT',
@@ -139,9 +136,9 @@ class _EunBinState extends State<_EunBin> {
   final List<DropdownMenuItem<String>> _dropDownMenuItems2 = phoneItems
       .map(
         (String value) => DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        ),
+      value: value,
+      child: Text(value),
+    ),
   ).toList();
 
   String? _btn2SelectedVal;
@@ -152,24 +149,36 @@ class _EunBinState extends State<_EunBin> {
   bool isPhone = false;
   bool isNaverPay = false;
 
-  //생애주기별 훅
-
   //초기화할때
   @override
   void initState() {
     super.initState();
-    LebListFuture = getPaymentList();
+
     mileFuture = getMile();
     franFuture = getFran();
-    menuTotalFuture = getMenuTotal();
   }
-
 
 
   @override
   Widget build(BuildContext context) {
+
+    //라우터로 전달받은 cate_no, product_no
+    late final args = ModalRoute.of(context)!.settings.arguments as Map;
+
+    //cate_no, product_no 키를 사용하여 값을 추출
+    late final product_no = args['product_no'];
+    late final count = args['count'];
+    late final hi_no = args['hi_no'];
+
+    int menuTotal = 0;
+
+
+    //read
+    LebVoFuture = getPaymentVo(product_no, hi_no);
+
+
     return FutureBuilder(
-      future: LebListFuture, //Future<> 함수명, 으로 받은 데이타
+      future: LebVoFuture, //Future<> 함수명, 으로 받은 데이타
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(child: CircularProgressIndicator());
@@ -178,6 +187,8 @@ class _EunBinState extends State<_EunBin> {
         } else if (!snapshot.hasData) {
           return Center(child: Text('데이터가 없습니다.'));
         } else {
+          menuTotal = menuTotal + (snapshot.data!.price * count).toInt();
+          total = menuTotal - usemile;
 
           return Container(
             width: 1080,
@@ -205,36 +216,36 @@ class _EunBinState extends State<_EunBin> {
                           ),
                         ),
                         FutureBuilder(
-                          future: franFuture, //Future<> 함수명, 으로 받은 데이타
-                          builder: (context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.waiting) {
-                            return Center(child: CircularProgressIndicator());
-                          } else if (snapshot.hasError) {
-                            return Center(child: Text('데이터를 불러오는 데 실패했습니다.'));
-                          } else if (!snapshot.hasData) {
-                            return Center(child: Text('데이터가 없습니다.'));
-                          } else {
+                            future: franFuture, //Future<> 함수명, 으로 받은 데이타
+                            builder: (context, snapshot) {
+                              if (snapshot.connectionState == ConnectionState.waiting) {
+                                return Center(child: CircularProgressIndicator());
+                              } else if (snapshot.hasError) {
+                                return Center(child: Text('데이터를 불러오는 데 실패했습니다.'));
+                              } else if (!snapshot.hasData) {
+                                return Center(child: Text('데이터가 없습니다.'));
+                              } else {
 
 
-                            return Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                                    child: Text("${snapshot.data}",
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w600)),
+                                return Container(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                                        child: Text("${snapshot.data}",
+                                            style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w600)),
+                                      ),
+                                      Container(
+                                        padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                                        child: Text("서울 강남구 역삼동"),
+                                      )
+                                    ],
                                   ),
-                                  Container(
-                                    padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                                    child: Text("서울 강남구 역삼동"),
-                                  )
-                                ],
-                              ),
-                            );
-                          }}),
+                                );
+                              }}),
                       ],
                     ),
                   ),
@@ -252,82 +263,72 @@ class _EunBinState extends State<_EunBin> {
                                   fontSize: 20, fontWeight: FontWeight.w700)),
                         ),
                         Container(
-                          child: ListView.builder(
-                              shrinkWrap: true,
-                              itemCount: snapshot.data!.length,
-                              itemBuilder: (BuildContext context, int index) {
-
-                                //historyList.add(snapshot.data![index]);
-
-                                return Container(
-                                  width: 450,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                      border: Border(
-                                          bottom: BorderSide(
-                                              color: Color(0xfff5f5f5))),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                          width: 450,
+                          height: 100,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                  bottom: BorderSide(
+                                      color: Color(0xfff5f5f5))),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                width: 150,
+                                height: 150,
+                                child: Image.asset(
+                                    "assets/images/${snapshot.data!.picture}"),
+                              ),
+                              Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Container(
-                                        width: 150,
-                                        height: 150,
-                                        child: Image.asset(
-                                            "assets/images/${snapshot.data![index].picture}"),
+                                        margin: EdgeInsets.fromLTRB(
+                                            0, 25, 0, 0),
+                                        child: Text(
+                                          "${snapshot.data!.productname}(${snapshot.data!.size})",
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w600),
+                                        ),
                                       ),
                                       Container(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0, 25, 0, 0),
-                                                child: Text(
-                                                  "${snapshot.data![index].productname}(${snapshot.data![index].size})",
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.w600),
-                                                ),
-                                              ),
-                                              Container(
-                                                child: Text(
-                                                    "${snapshot.data![index].price}",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w600)),
-                                              ),
-                                              Container(
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                      child: Text(
-                                                          "${snapshot.data![index].count}개/"),
-                                                    ),
-                                                    Container(
-                                                      child: Text(
-                                                          "${snapshot.data![index].hoi}/"),
-                                                    ),
-                                                    Container(
-                                                      child: Text("Take Out"),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.fromLTRB(
-                                                          50, 0, 0, 0),
-                                                      alignment:
-                                                          Alignment.bottomRight,
-                                                      child: Text("${snapshot.data![index].count*snapshot.data![index].price}"),
-                                                    )
-                                              ],
+                                        child: Text(
+                                            "${snapshot.data!.price}",
+                                            style: TextStyle(
+                                                fontWeight:
+                                                FontWeight.w600)),
+                                      ),
+                                      Container(
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              child: Text(
+                                                  "${count}개/"),
                                             ),
-                                          ),
-                                        ],
-                                      )),
+                                            Container(
+                                              child: Text(
+                                                  "${snapshot.data!.hoi}/"),
+                                            ),
+                                            Container(
+                                              child: Text("Take Out"),
+                                            ),
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  50, 0, 0, 0),
+                                              alignment:
+                                              Alignment.bottomRight,
+                                              child: Text("${count*snapshot.data!.price}"),
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                     ],
-                                  ),
-                                );
-                              }),
+                                  )),
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -471,7 +472,7 @@ class _EunBinState extends State<_EunBin> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xff243c84),
                                     padding:
-                                        EdgeInsets.fromLTRB(30, 15, 30, 15),
+                                    EdgeInsets.fromLTRB(30, 15, 30, 15),
                                     shape: BeveledRectangleBorder(
                                       borderRadius: BorderRadius.circular(2),
                                     ),
@@ -513,7 +514,7 @@ class _EunBinState extends State<_EunBin> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xff243c84),
                                     padding:
-                                        EdgeInsets.fromLTRB(20, 15, 20, 15),
+                                    EdgeInsets.fromLTRB(20, 15, 20, 15),
                                     shape: BeveledRectangleBorder(
                                       borderRadius: BorderRadius.circular(2),
                                     ),
@@ -572,7 +573,7 @@ class _EunBinState extends State<_EunBin> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xff243c84),
                                     padding:
-                                        EdgeInsets.fromLTRB(20, 15, 20, 15),
+                                    EdgeInsets.fromLTRB(20, 15, 20, 15),
                                     shape: BeveledRectangleBorder(
                                       borderRadius: BorderRadius.circular(2),
                                     ),
@@ -612,7 +613,7 @@ class _EunBinState extends State<_EunBin> {
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Color(0xff243c84),
                                     padding:
-                                        EdgeInsets.fromLTRB(20, 15, 20, 15),
+                                    EdgeInsets.fromLTRB(20, 15, 20, 15),
                                     shape: BeveledRectangleBorder(
                                       borderRadius: BorderRadius.circular(2),
                                     ),
@@ -627,100 +628,84 @@ class _EunBinState extends State<_EunBin> {
                       ],
                     ),
                   ),
-                  FutureBuilder(
-                      future: menuTotalFuture, //Future<> 함수명, 으로 받은 데이타
-                      builder: (context, snapshot) {
-                        if (snapshot.connectionState == ConnectionState.waiting) {
-                          return Center(child: CircularProgressIndicator());
-                        } else if (snapshot.hasError) {
-                          return Center(child: Text('데이터를 불러오는 데 실패했습니다.'));
-                        } else if (!snapshot.hasData) {
-                          return Center(child: Text('데이터가 없습니다.'));
-                        } else {
-                          menuTotal = int.parse("${snapshot.data}");
-                          total = (snapshot.data as int) - usemile;
+              Container(
+                width: 1080,
+                color: Color(0xffffffff),
+                margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
+                      child: Text("결제정보",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w700)),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(25, 10, 0, 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Container(
 
-                          return  Container(
-                            width: 1080,
-                            color: Color(0xffffffff),
-                            margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                            padding: EdgeInsets.fromLTRB(0, 5, 0, 10),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            child: Row(
                               children: [
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(20, 10, 0, 0),
-                                  child: Text("결제정보",
-                                      style: TextStyle(
-                                          fontSize: 20, fontWeight: FontWeight.w700)),
+                                  margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                  child: Text("메뉴금액",
+                                      style:
+                                      TextStyle(fontWeight: FontWeight.w600)),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(25, 10, 0, 0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
 
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                                              child: Text("메뉴금액",
-                                                  style:
-                                                  TextStyle(fontWeight: FontWeight.w600)),
-                                            ),
-                                            Container(
-
-                                              child: Text("${menuTotal}원"),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                                              child: Text("할인쿠폰",
-                                                  style:
-                                                  TextStyle(fontWeight: FontWeight.w600)),
-                                            ),
-                                            Container(
-                                              child: Text("${usemile}원"),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Row(
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                                              child: Text("총결제금액",
-                                                  style: TextStyle(
-                                                      fontSize: 20,
-                                                      fontWeight: FontWeight.w600)),
-                                            ),
-                                            Container(
-                                              child: snapshot.data != null
-                                                  ? Text("${total}원",
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight: FontWeight.w600),
-                                              ) : Text("데이터가 없습니다"),
-                                            )
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                                  child: Text("${menuTotal}원"),
                                 ),
                               ],
                             ),
-                          );
-                        }
-                      }
-                  ),
+                          ),
+                          Container(
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                  child: Text("할인쿠폰",
+                                      style:
+                                      TextStyle(fontWeight: FontWeight.w600)),
+                                ),
+                                Container(
+                                  child: Text("${usemile}원"),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            child: Row(
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                  child: Text("총결제금액",
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600)),
+                                ),
+                                Container(
+                                  child: snapshot.data != null
+                                      ? Text("${total}원",
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600),
+                                  ) : Text("데이터가 없습니다"),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
                   Container(
                     width: 1080,
                     height: 70,
@@ -729,7 +714,7 @@ class _EunBinState extends State<_EunBin> {
                       child: TextButton(
                           onPressed: () {
                             print("영수증");
-                            payment(total, usemile, mile);
+                            payment(total, usemile, mile, product_no, count, hi_no);
                             //history(historyList, receipt_no);
                             print("끝");
 
@@ -771,8 +756,10 @@ class _EunBinState extends State<_EunBin> {
   }
 }
 
-
-Future<List<LebVo>> getPaymentList() async {
+Future<LebVo> getPaymentVo(product_no, hi_no) async {
+  print("왜 안될까?????????????????????");
+  print(product_no);
+  print(hi_no);
   try {
     /*----요청처리-------------------*/
     //Dio 객체 생성 및 설정
@@ -782,29 +769,21 @@ Future<List<LebVo>> getPaymentList() async {
     dio.options.headers['Content-Type'] = 'application/json';
 
     // 서버 요청
-    final response = await dio
-        .get('http://localhost:9011/api/payment/shop', queryParameters: {});
+    final response = await dio.get(
+      'http://localhost:9011/api/payment/${product_no}/${hi_no}',
+    );
 
     /*----응답처리-------------------*/
     if (response.statusCode == 200) {
       //접속성공 200 이면
+      print("!?????????????????????!!!!!!");
       print(response.data);
       print(response.data["apiData"]); // json->map 자동변경
-      print(response.data["apiData"].length);
-
-      //비어있는 리스트 생성
-      List<LebVo> paymentList = [];
-      //map => {} => [{}, {}, {}]
-
+      LebVo directVo = LebVo.fromJson(response.data["apiData"]);
+      print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       //메뉴 금액
-      int menuTotal = 0;
 
-      //print(paymentList);
-      for (int i = 0; i < response.data["apiData"].length; i++) {
-        paymentList.add(LebVo.fromJson(response.data["apiData"][i]));
-      }
-
-      return paymentList;
+      return directVo;
     } else {
       //접속실패 404, 502등등 api서버 문제
       throw Exception('api 서버 문제');
@@ -815,48 +794,6 @@ Future<List<LebVo>> getPaymentList() async {
   }
 }
 
-Future<int> getMenuTotal() async {
-  try {
-    /*----요청처리-------------------*/
-    //Dio 객체 생성 및 설정
-    var dio = Dio();
-
-    // 헤더설정:json으로 전송
-    dio.options.headers['Content-Type'] = 'application/json';
-
-    // 서버 요청
-    final response = await dio
-        .get('http://localhost:9011/api/payment/shop', queryParameters: {});
-
-    /*----응답처리-------------------*/
-    if (response.statusCode == 200) {
-
-      //메뉴 금액
-      int menuTotal = 0;
-
-      //print(paymentList);
-      for (int i = 0; i < response.data["apiData"].length; i++) {
-
-        print("-1--------------------------------");
-
-        int price = int.parse("${response.data["apiData"][i]["price"]}");
-        int count = int.parse("${response.data["apiData"][i]["count"]}");
-
-        print(menuTotal);
-        menuTotal = menuTotal + price * count;
-        print(menuTotal);
-        print("-2--------------------------------");
-      }
-      return menuTotal;
-    } else {
-      //접속실패 404, 502등등 api서버 문제
-      throw Exception('api 서버 문제');
-    }
-  } catch (e) {
-    //예외 발생
-    throw Exception('Failed to load person: $e');
-  }
-}
 
 //마일리지
 Future<int> getMile() async {
@@ -928,7 +865,7 @@ Future<String> getFran() async {
 
 
 //결제하기
-Future<int> payment(int total, int usemile, int mile) async {
+Future<int> payment(int total, int usemile, int mile, product_no, count, hi_no) async {
   print("payment()");
 
   try {
@@ -942,14 +879,16 @@ Future<int> payment(int total, int usemile, int mile) async {
 
     // 서버 요청
     final response = await dio.post(
-      'http://localhost:9011/api/payment',
+      'http://localhost:9011/api/payment/direct',
 
       data: {
         // 예시 data  map->json자동변경
         'total': total, //총 결제 금액
         'usemile': usemile, //사용한 마일리지
         'totalmile': mile, //총 마일리지
-
+        'product_no': product_no,
+        'count': count,
+        'hi_no': hi_no
       },
 
     );
@@ -971,47 +910,3 @@ Future<int> payment(int total, int usemile, int mile) async {
     throw Exception('Failed to load person: $e');
   }
 }
-
-
-/*
-Future<void> history(List<LebVo> paymentList, int receipt_no) async {
-  try {
-    /*----요청처리-------------------*/
-    //Dio 객체 생성 및 설정
-    var dio = Dio();
-
-    // 헤더설정:json으로 전송
-    dio.options.headers['Content-Type'] = 'application/json';
-
-    Map<String, dynamic> data = {
-      'historyList': paymentList,
-      'receipt_no': receipt_no
-    };
-
-    // 서버 요청
-    final response = await dio.post(
-      'http://localhost:9011/api/payment/shop',
-
-      data: data,
-
-    );
-
-    /*----응답처리-------------------*/
-    if (response.statusCode == 200) {
-      //접속성공 200 이면
-      print(response.data); // json->map 자동변경
-      //return PersonVo.fromJson(response.data["apiData"]);
-
-
-    } else {
-      //접속실패 404, 502등등 api서버 문제
-      throw Exception('api 서버 문제');
-    }
-  } catch (e) {
-    //예외 발생
-    throw Exception('Failed to load person: $e');
-  }
-}
-*/
-
-

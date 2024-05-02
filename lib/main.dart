@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'DaSom/dasom.dart';
 import 'EunBin/eunbin.dart';
+import 'EunBin/eunbin0.dart';
 import 'JaeHyeon/jaehyeon.dart';
 import 'JaeHyeon/jaehyeon2.dart';
 import 'JaeHyeon/jaehyeon3.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         "/": (context) => Home(),
         "/dasom": (context) => DaSom(),
         "/eunbin": (context) => EunBin(),
+        "/eunbin0": (context) => EunBin0(),
         "/jaehyeon": (context) => JaeHyeon(),
         "/jaehyeon2": (context) => JeaHyeon2(),
         "/jaehyeon3": (context) => JeaHyeon3(),
