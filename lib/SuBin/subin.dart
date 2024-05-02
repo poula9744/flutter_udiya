@@ -39,12 +39,17 @@ class _SuBin extends StatefulWidget {
 
 //할일 정의
 class _SuBinState extends State<_SuBin> {
-
   //변수(미래의 데이터 담기)
   late Future<KsbVo> KsbVoFuture;
 
   late int count = 0;
-  late int hi = -1 ;
+  late int hi = -1;
+  int _product_no = 0;
+
+  //cate_no, product_no 키를 사용하여 값을 추출
+  late final int cate_no ;
+  late final int product_no ;
+
 
   //초기화 함수(1번만 실행됨)
   @override
@@ -52,20 +57,33 @@ class _SuBinState extends State<_SuBin> {
     super.initState();
 
     //추가 코드 아래에 작성
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // context를 안전하게 사용할 수 있는 첫 시점
+      final args = ModalRoute.of(context)!.settings.arguments as Map;
+
+
+      setState(() {
+        cate_no = args['cate_no'];
+        product_no = args['product_no'];
+
+        KsbVoFuture = getProductByNo(cate_no, product_no);
+      });
+
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     //라우터로 전달받은 cate_no, product_no
-    late final args = ModalRoute.of(context)!.settings.arguments as Map;
+    //late final args = ModalRoute.of(context)!.settings.arguments as Map;
 
     //cate_no, product_no 키를 사용하여 값을 추출
-    late final cate_no = args['cate_no'];
-    late final product_no = args['product_no'];
-    KsbVoFuture = getProductByNo(cate_no, product_no);
+    //late final cate_no = args['cate_no'];
+    //late final product_no = args['product_no'];
+    //KsbVoFuture = getProductByNo(cate_no, product_no);
 
-    print(cate_no);
-    print(product_no);
+    //print(cate_no);
+    //print(product_no);
     return FutureBuilder(
       future: KsbVoFuture, //Future<> 함수명, 으로 받은 데이타
       builder: (context, snapshot) {
@@ -77,6 +95,9 @@ class _SuBinState extends State<_SuBin> {
           return Center(child: Text('데이터가 없습니다.'));
         } else {
           //데이터가 있으면 _nameController.text = snapshot.data!.name;
+
+          _product_no = snapshot.data!.product_no!;
+
           return Container(
             width: 1080,
             height: 1920,
@@ -172,50 +193,6 @@ class _SuBinState extends State<_SuBin> {
                   Row(
                     children: [
                       Container(
-                          margin: EdgeInsets.fromLTRB(55, 10, 30, 10),
-                          width: 130,
-                          height: 40,
-                          child: OutlinedButton(
-                            onPressed: () {
-                              hi = 0;
-                            },
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor: Color(0xffffffff),
-                              padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                            ),
-                            child: Text(
-                              "HOT",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xffa81111),
-                              ),
-                            ),
-                          )),
-                      Container(
-                          margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                          width: 130,
-                          height: 40,
-                          child: OutlinedButton(
-                            onPressed: () {
-                              hi = 1;
-                            },
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor: Color(0xffffffff),
-                              padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-                            ),
-                            child: Text(
-                              "ICED",
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Color(0xff243c84),
-                              ),
-                            ),
-                          )),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
                         margin: EdgeInsets.fromLTRB(30, 10, 0, 10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
@@ -266,6 +243,44 @@ class _SuBinState extends State<_SuBin> {
                       )
                     ],
                   ),
+                  Container(
+                    width: 400,
+                    height: 160,
+                    color: Color(0xffffffff),
+                    child: Column(
+                      children: <Widget>[
+                        // 라디오 그룹
+                        RadioListTile(
+                          dense: true,
+                          value: 1,
+                          groupValue: hi,
+                          onChanged: (value) {
+                            setState(() {
+                              hi = value!;
+                              print(hi);
+                            });
+                          },
+                          title: Text('Hot'),
+                          activeColor: Color(0xff243c84),
+                        ),
+                        RadioListTile(
+                          dense: true,
+                          value: 2,
+                          groupValue: hi,
+                          onChanged: (value) {
+                            setState(() {
+                              hi = value!;
+                              print(hi);
+                            });
+                          },
+                          title: Text('ICED'),
+                          activeColor: Color(0xff243c84),
+                        ),
+                      ],
+                    ),
+
+
+                  ),
                   Row(
                     children: [
                       Container(
@@ -274,31 +289,31 @@ class _SuBinState extends State<_SuBin> {
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {
-
                               addCart();
 
                               showDialog(
                                   context: context,
-                                  builder: (BuildContext context){
+                                  builder: (BuildContext context) {
                                     return AlertDialog(
                                       title: Text("장바구니"),
-                                      content: Text("장바구니에 담았습니다. 다른 메뉴를 보시겠습니까?"),
+                                      content:
+                                          Text("장바구니에 담았습니다. 다른 메뉴를 보시겠습니까?"),
                                       actions: [
                                         TextButton(
-                                            onPressed: (){
-                                              print(count);
+                                            onPressed: () {
+                                              //print(count);
                                               //Navigator.pushNamed(context, "/dasom");
                                             },
                                             child: Text("장바구니 가기")),
                                         TextButton(
-                                            onPressed: (){
-                                              Navigator.pushNamed(context, "/youngsoo");
+                                            onPressed: () {
+                                              Navigator.pushNamed(
+                                                  context, "/youngsoo");
                                             },
                                             child: Text("다른 메뉴 보러가기")),
                                       ],
                                     );
-                                  }
-                              );
+                                  });
                             },
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Color(0xff243c84),
@@ -318,8 +333,17 @@ class _SuBinState extends State<_SuBin> {
                           height: 50,
                           child: ElevatedButton(
                             onPressed: () {
-                              print("장바구니 저장");
-                              addCart();
+                              print(_product_no);
+                              Navigator.pushNamed(
+                                context,
+                                "/eunbin",
+                                arguments: {
+                                  "product_no": _product_no,
+                                  "hi_no": hi,
+                                  "count": count
+                                },
+
+                              );
                             },
                             style: OutlinedButton.styleFrom(
                               backgroundColor: Color(0xff243c84),
@@ -358,10 +382,10 @@ class _SuBinState extends State<_SuBin> {
       /*----응답처리-------------------*/
       if (response.statusCode == 200) {
         //접속성공 200 이면
-        print(response.data); // json->map 자동변경
-        print("========================="); // json->map 자동변경
-        print(KsbVo.fromJson(response.data));
-        print("========================="); // json->map 자동변경
+        //print(response.data); // json->map 자동변경
+        //print("========================="); // json->map 자동변경
+        //print(KsbVo.fromJson(response.data));
+        //print("========================="); // json->map 자동변경
         return KsbVo.fromJson(response.data);
       } else {
         //접속실패 404, 502등등 api서버 문제
@@ -373,38 +397,50 @@ class _SuBinState extends State<_SuBin> {
     }
   }
 
-  Future<KsbVo> addCart() async {
+  Future<int> addCart() async {
     try {
-    /*----요청처리-------------------*/
-    //Dio 객체 생성 및 설정
+      /*----요청처리-------------------*/
+      //Dio 객체 생성 및 설정
       var dio = Dio();
-    // 헤더설정:json으로 전송
+      // 헤더설정:json으로 전송
       dio.options.headers['Content-Type'] = 'application/json';
 
-    // 서버 요청
+      var data= {
+        // 예시 data map->json자동변경
+        "product_no": _product_no,
+        "count": count,
+        "hi": hi,
+      };
+
+      print(data);
+      // 서버 요청
       final response = await dio.post(
-        'http://localhost:9000/api/udiya/addCart',
-        data: { // 예시 data map->json자동변경
+        'http://localhost:9011/api/udiya/addCart',
+        data: {
+          // 예시 data map->json자동변경
+          "product_no": _product_no,
           "count": count,
-          "hi": hi,
-          "product_no": 3,
+          "hi_no": hi,
         },
       );
 
-
-    /*----응답처리-------------------*/
+      /*----응답처리-------------------*/
       if (response.statusCode == 200) {
-    //접속성공 200 이면
-        print(response.data); // json->map 자동변경
+        //접속성공 200 이면
+        //print(response.data); // json->map 자동변경
 
-        return KsbVo.fromJson(response.data["apiData"]);
+        return response.data;
       } else {
-    //접속실패 404, 502등등 api서버 문제
+        //접속실패 404, 502등등 api서버 문제
         throw Exception('api 서버 문제');
       }
     } catch (e) {
-    //예외 발생
+      //예외 발생
       throw Exception('Failed to load person: $e');
     }
   }
 }
+
+
+
+///////////////////////////////////////////////////////////////////
