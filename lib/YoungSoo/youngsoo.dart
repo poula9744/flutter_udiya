@@ -19,20 +19,6 @@ class YoungSoo extends StatelessWidget {
             style: TextStyle(
                 fontWeight: FontWeight.w600, color: Color(0xff243c84)),
           ),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  print("장바구니 클릭");
-                  Navigator.pushNamed(context, "/dasom");
-                },
-                icon: Icon(Icons.shopping_bag)),
-            IconButton(
-                onPressed: () {
-                  print("홈으로");
-                  Navigator.pushNamed(context, "/home");
-                },
-                icon: Icon(Icons.home))
-          ],
         ),
 
         body: _YoungSoo(),

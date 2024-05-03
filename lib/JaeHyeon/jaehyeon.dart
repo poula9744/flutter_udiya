@@ -15,18 +15,6 @@ class JaeHyeon extends StatelessWidget {
         title: Text("주문 완료",
             style: TextStyle(
                 fontWeight: FontWeight.w600, color: Color(0xff243c84))),
-        actions: [
-          IconButton(
-              onPressed: () {
-                print("장바구니 클릭");
-              },
-              icon: Icon(Icons.shopping_bag)),
-          IconButton(
-              onPressed: () {
-                print("홈으로");
-              },
-              icon: Icon(Icons.home))
-        ],
       ),
       body: _pick(),
       bottomNavigationBar: BottomNavigationBar(

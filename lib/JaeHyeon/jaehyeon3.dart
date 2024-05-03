@@ -13,19 +13,7 @@ class JeaHyeon3 extends StatelessWidget {
         centerTitle: true,
         iconTheme: IconThemeData(color: Color(0xff243c84)),
         title: Text("마일리지", style: TextStyle(fontWeight: FontWeight.w600, color: Color(0xff243c84))),
-        actions: [
-          IconButton(
-              onPressed: () {
-                print("장바구니 클릭");
-                Navigator.pushNamed(context, "/dasom");
-              },
-              icon: Icon(Icons.shopping_bag)),
-          IconButton(
-              onPressed: () {
-                print("홈으로");
-              },
-              icon: Icon(Icons.home))
-        ],
+
       ),
       body: _mile(),
       bottomNavigationBar: BottomNavigationBar(

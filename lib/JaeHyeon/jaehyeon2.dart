@@ -12,18 +12,6 @@ class JeaHyeon2 extends StatelessWidget {
         centerTitle: true,
         iconTheme: IconThemeData(color: Color(0xff243c84)),
         title: Text("주문 내역"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                print("장바구니 클릭");
-              },
-              icon: Icon(Icons.shopping_bag)),
-          IconButton(
-              onPressed: () {
-                print("홈으로");
-              },
-              icon: Icon(Icons.home))
-        ],
       ),
       body: _history(),
       bottomNavigationBar: BottomNavigationBar(
@@ -147,7 +135,7 @@ class _historyState extends State<_history> {
                                   Container(
                                       width: 100,
                                       child: Image.asset(
-                                          "assets/images/coffee/${snapshot.data![index].picture}.png")),
+                                          "assets/images/${snapshot.data![index].picture}")),
                                   Container(
                                     padding:
                                         EdgeInsets.fromLTRB(20, 25, 20, 20),
@@ -263,17 +251,17 @@ class _historyState extends State<_history> {
 
   Future<List<JhVo>> _hislist() async {
     try {
-/*----요청처리-------------------*/
-//Dio 객체 생성및 설정
+      /*----요청처리-------------------*/
+      //Dio 객체 생성및 설정
       var dio = Dio();
-// 헤더설정:json으로 전송
+      // 헤더설정:json으로 전송
       dio.options.headers['Content-Type'] = 'application/json';
-// 서버 요청
+      // 서버 요청
       final response = await dio.get('http://localhost:9011/api/orderlist');
 
-/*----응답처리-------------------*/
+      /*----응답처리-------------------*/
       if (response.statusCode == 200) {
-//접속성공 200 이면
+        //접속성공 200 이면
         print(response.data); // json->map 자동변경
         List<JhVo> hList = [];
         for (int i = 0; i < response.data["apiData"].length; i++) {
@@ -285,11 +273,11 @@ class _historyState extends State<_history> {
         print(hList);
         return hList;
       } else {
-//접속실패 404, 502등등 api서버 문제
+        //접속실패 404, 502등등 api서버 문제
         throw Exception('api 서버 문제');
       }
     } catch (e) {
-//예외 발생
+      //예외 발생
       throw Exception('Failed to load person: $e');
     }
   }

@@ -302,7 +302,7 @@ class _SuBinState extends State<_SuBin> {
                                         TextButton(
                                             onPressed: () {
                                               //print(count);
-                                              //Navigator.pushNamed(context, "/dasom");
+                                              Navigator.pushNamed(context, "/dasom");
                                             },
                                             child: Text("장바구니 가기")),
                                         TextButton(
