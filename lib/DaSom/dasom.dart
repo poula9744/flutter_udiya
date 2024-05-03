@@ -168,7 +168,7 @@ class _DaSomState extends State<_DaSom> {
                                         snapshot.data![index].hiNo);
                                   },
                                   child: Text(
-                                      "현재: ${snapshot.data![index].hoi} ========= hot/ice 변경"),
+                                      "선택된 옵션: ${snapshot.data![index].hoi} =========> hot/ice 변경"),
                                 ),
                               ),
                               Container(
