@@ -116,11 +116,18 @@ class _DaSomState extends State<_DaSom> {
                   } else if (snapshot.hasError) {
                     return Center(child: Text('데이터를 불러오는 데 실패했습니다.'));
                   } else if (!snapshot.hasData) {
+
+
+
                     return Center(child: Text('데이터가 없습니다.'));
                   } else { //데이터가 있으면
-                    // 모든 상품의 총 주문 가격 계산
-                    print( snapshot.data!.length);
+                    
+                    totalOrderPrice = 0; //가격초기화
 
+                    // 모든 상품의 총 주문 가격 계산
+                    print( "----------ddd--------------");
+                    print( snapshot.data!.length);
+                    print( "----------ddd--------------");
 
                     snapshot.data!.forEach((product) {
                       print("===========================");
