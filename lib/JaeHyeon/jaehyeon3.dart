@@ -257,7 +257,7 @@ class _mileState extends State<_mile> {
                   child: Text("아메리카노(L) 3,000원"),
                 ),
                 Container(
-                  width: 160,
+                  width: 180,
                   child: Image.asset("assets/images/coffee/HOT_cafe_americano.png"),
                 ),
                 Container(
