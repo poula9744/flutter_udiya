@@ -236,7 +236,7 @@ class _SuBinState extends State<_SuBin> {
                       Container(
                         margin: EdgeInsets.fromLTRB(160, 0, 0, 0),
                         child: Text(
-                          "${snapshot.data!.price}" + "원",
+                          "${snapshot.data!.price! * count}" + "원",
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.bold),
                         ),

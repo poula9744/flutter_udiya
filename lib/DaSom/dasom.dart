@@ -319,7 +319,7 @@ class _DaSomState extends State<_DaSom> {
 
       // 서버 요청
       final response = await dio.get(
-        'http://localhost:9011/api/shop/list/4',
+        'http://localhost:9011/api/shop/list/1',
         /*data: {
     //예시
   }*/
