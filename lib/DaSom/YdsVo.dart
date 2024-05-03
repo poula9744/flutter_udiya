@@ -54,5 +54,8 @@ class YdsVo {
     };
   }
 
-
+  @override
+  String toString() {
+    return 'YdsVo{shopNo: $shopNo, usersNo: $usersNo, productNo: $productNo, hiNo: $hiNo, hoi: $hoi, count: $count, picture: $picture, productname: $productname, size: $size, price: $price}';
+  }
 }
